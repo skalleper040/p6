@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 
 import p6.*;
 import resources.*;
+import testFiles.Test2UI;
 
 public class Controller {
 	private Timer timer;
