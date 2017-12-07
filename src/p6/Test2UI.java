@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import controllers.Controller;
+import resources.ColPanel;
+
 public class Test2UI extends JFrame implements ActionListener {
 
 	private Controller controller;

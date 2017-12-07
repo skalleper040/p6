@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import controllers.Controller;
+
 public class ColorDisplayDemo extends JPanel {
 	private Controller controller;
 	private ColorDisplay display;

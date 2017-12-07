@@ -1,4 +1,7 @@
-package p6;
+package testFiles;
+
+import resources.Array7;
+import resources.Array7x7;
 
 public class Test {
 	public static void main(String[] args) {

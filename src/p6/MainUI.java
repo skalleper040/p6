@@ -2,6 +2,10 @@ package p6;
 
 import javax.swing.SwingUtilities;
 
+import controllers.Controller;
+import resources.Array7x7;
+import testFiles.Test2UI;
+
 public class MainUI {
 	public static void main(String[] args) {
 		int[][] mat1 = { { 1, 2, 3, 4, 5, 6, 7 }, { 2, 2, 2, 2, 2, 2, 2 }, { 3, 3, 3, 3, 3, 3, 3 },

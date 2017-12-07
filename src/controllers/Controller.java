@@ -1,4 +1,4 @@
-package p6;
+package controllers;
 
 import java.util.Random;
 import java.util.Timer;

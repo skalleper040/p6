@@ -1,4 +1,4 @@
-package p6;
+package resources;
 
 /**
  * Klassen representerar en array innehållandes 7 st Array7-objekt/en 2d-array med 7x7 värden
