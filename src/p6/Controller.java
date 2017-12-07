@@ -7,9 +7,8 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import p6.Color;
-import p6.ColorDisplayDemo;
-import p6.Test2UI;
+import p6.*;
+import resources.*;
 
 public class Controller {
 	private Timer timer;
@@ -41,9 +40,9 @@ public class Controller {
 		demo.setController(this);
 	}
 	
-	public Controller(Test2UI ui, Array7x7 array) {
+	public Controller(Test2UI ui, Array7x7 a772) {
 		this.ui = ui;
-		this.array = array;
+		this.array = a772;
 		ui.setController(this);
 		showArray();
 	}

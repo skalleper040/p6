@@ -10,6 +10,8 @@ import javax.swing.SwingUtilities;
 import p6.Color;
 import p6.ColorDisplayDemo;
 import p6.Test2UI;
+import p6.*;
+import resources.*;
 
 public class Controller {
 	private Timer timer;
