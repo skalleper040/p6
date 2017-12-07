@@ -10,7 +10,6 @@ public class ColPanel extends JPanel {
 	private JTextField[] colTextFields = new JTextField[7];
 	
 	public ColPanel (int rows, int width, int height) {
-		JTextField[] colTextFields = new JTextField[rows];
 		setPreferredSize(new Dimension(width,height));
 		setLayout(new GridLayout(rows,1,4,4));
 		for (int row=0; row<rows; row++) {
