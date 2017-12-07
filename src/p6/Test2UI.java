@@ -52,6 +52,6 @@ public class Test2UI extends JFrame {
 	}
 	
 	public void setArrLabels(int row, int col, int val) {
-		arrayPanel.setArrLabel(row, col, val);
+		this.arrayPanel.setArrLabel(row, col, val);
 	}
 }
