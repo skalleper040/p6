@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ColPanel extends JPanel {
+	private JTextField[] colTextFields = new JTextField[7];
 	
 	public ColPanel (int rows, int width, int height) {
 		JTextField[] colTextFields = new JTextField[rows];
@@ -16,6 +17,16 @@ public class ColPanel extends JPanel {
 			colTextFields[row] = new JTextField("0");
 			add(colTextFields[row]);
 		}
+	}
+	
+	/**
+	 * Sätt värdet på en rad
+	 * @param row vilken rad
+	 * @param val vilket värde
+	 */
+	
+	public void setColTextField(int row, int val) {
+		this.colTextFields[row].setText(""+val);
 	}
 }
 

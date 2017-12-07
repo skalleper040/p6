@@ -54,4 +54,13 @@ public class Test2UI extends JFrame {
 	public void setArrLabels(int row, int col, int val) {
 		this.arrayPanel.setArrLabel(row, col, val);
 	}
+	
+	public void setColTextField(char direction, int row, int val) {
+		if (direction == 'l') {
+			this.leftColPanel.setColTextField(row, val);
+		}
+		else if (direction == 'r') {
+			this.rightColPanel.setColTextField(row, val);
+		}
+	}
 }
