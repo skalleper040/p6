@@ -4,11 +4,13 @@ package p6;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Test2UI extends JFrame {
+public class Test2UI extends JFrame implements ActionListener {
 
 	private Controller controller;
 	private ArrayPanel arrayPanel = new ArrayPanel(7,7,250,200);
@@ -49,6 +51,8 @@ public class Test2UI extends JFrame {
 		buttonPanel.add(leftButton);
 		buttonPanel.add(rightButton);
 		buttonPanel.setBorder(new EmptyBorder(0,30,30,30));
+		leftButton.addActionListener(this);
+		rightButton.addActionListener(this);
 	}
 	
 	public void setArrLabels(int row, int col, int val) {
@@ -63,4 +67,18 @@ public class Test2UI extends JFrame {
 			this.rightColPanel.setColTextField(row, val);
 		}
 	}
+	
+	public void updateDisplay() {
+		
+	}
+
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == leftButton) {
+			controller.shiftHorizontal('l');
+		}
+		
+	}
+	
+	
 }

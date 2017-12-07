@@ -58,21 +58,28 @@ public class Controller {
 	 */
 	public void shiftHorizontal(char direction) {
 		if (direction == 'r') {
-			rightColumn = array.getCol(array.toIntArray().length-1);
+			this.rightColumn = this.array.getCol(array.toIntArray().length-1);
 			for (int i=array.toIntArray().length-2; i>=0; i--) {
-				Array7 colToBeMoved = array.getCol(i);
-				array.setCol(i+1, colToBeMoved);
+				Array7 colToBeMoved = this.array.getCol(i);
+				this.array.setCol(i+1, colToBeMoved);
 			}
-			array.setCol(0, rightColumn);
+			this.array.setCol(0, this.rightColumn);
+			for (int i=0; i<7; i++) {
+				this.ui.setColTextField('r', i, this.rightColumn.getElement(i));
+			}
+			
 		}
 		
 		else if(direction == 'l') {
-			leftColumn = array.getCol(0);
+			this.leftColumn = this.array.getCol(0);
 			for(int i=1; i<array.toIntArray().length; i++) {
-				Array7 colToBeMoved = array.getCol(i);
-				array.setCol(i-1, colToBeMoved);
+				Array7 colToBeMoved = this.array.getCol(i);
+				this.array.setCol(i-1, colToBeMoved);
 			}
-			array.setCol(array.toIntArray().length-1, rightColumn);
+			array.setCol(array.toIntArray().length-1, this.rightColumn);
+			for (int i=0; i<7; i++) {
+				this.ui.setColTextField('l', i, this.leftColumn.getElement(i));
+			}
 		}
 	}
 	
