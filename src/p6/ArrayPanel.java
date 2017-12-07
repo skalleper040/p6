@@ -15,7 +15,7 @@ public class ArrayPanel extends JPanel {
 		setPreferredSize(new Dimension(width,height));
 		setLayout(new GridLayout(rows,cols,4,4));
 		setBorder(new EmptyBorder(0,20,0,20));
-		//arrLabels[][] = new JLabel[rows][cols];
+	
 		
 		for (int row=0; row<rows; row++) {
 			for (int col=0; col<cols; col++) {
