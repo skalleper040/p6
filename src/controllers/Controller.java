@@ -1,4 +1,4 @@
-package p6;
+package controllers;
 
 import java.util.Random;
 import java.util.Timer;
@@ -6,6 +6,12 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+
+import p6.Color;
+import p6.ColorDisplayDemo;
+import resources.Array7;
+import resources.Array7x7;
+import testFiles.Test2UI;
 
 public class Controller {
 	private Timer timer;

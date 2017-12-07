@@ -1,4 +1,4 @@
-package p6;
+package resources;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;

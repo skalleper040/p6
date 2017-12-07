@@ -1,4 +1,4 @@
-package p6;
+package testFiles;
 
 
 import java.awt.BorderLayout;
@@ -7,6 +7,9 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import controllers.Controller;
+import resources.*;
 
 public class Test2UI extends JFrame {
 

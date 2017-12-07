@@ -1,4 +1,5 @@
-package p6;
+package testFiles;
+
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -7,6 +8,10 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import resources.ArrayPanel;
+import resources.ColPanel;
+import resources.RowPanel;
 
 public class Test1UI extends JFrame{
 	private ArrayPanel arrayPanel = new ArrayPanel(7,7,250,200);

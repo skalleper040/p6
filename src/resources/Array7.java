@@ -1,4 +1,4 @@
-package p6;
+package resources;
 
 /**
  * Klassen Array7 reprsenterar en array med 7 int-element
