@@ -1,5 +1,7 @@
 package p6;
 
 public class Test2 {
-	//Jag lägger till en go kommentar här
+	//Jag lï¿½gger till en go kommentar hï¿½r
+	
+	// en annan kommentar
 }
