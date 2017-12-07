@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import controllers.Controller;
 import resources.*;
+import p6.*;
 
 public class Test2UI extends JFrame {
 

@@ -2,9 +2,9 @@ package p6;
 
 import javax.swing.SwingUtilities;
 
-import controllers.Controller;
-import resources.Array7x7;
-import testFiles.Test2UI;
+import controllers.*;
+import resources.*;
+import testFiles.*;
 
 public class MainUI {
 	public static void main(String[] args) {

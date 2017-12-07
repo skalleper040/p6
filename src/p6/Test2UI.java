@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import controllers.Controller;
+import resources.ArrayPanel;
 import resources.ColPanel;
 
 public class Test2UI extends JFrame implements ActionListener {
