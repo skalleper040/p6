@@ -12,7 +12,7 @@ public class RowPanel extends JPanel {
 		JTextField[] colTextFields = new JTextField[cols];
 		setPreferredSize(new Dimension(width,height));
 		setLayout(new GridLayout(1,cols,4,4));
-		setBorder(new Bord);
+		setBorder(new Bord)
 		for (int col=0; col<cols; col++) {
 			colTextFields[col] = new JTextField("0");
 			add(colTextFields[col]);
