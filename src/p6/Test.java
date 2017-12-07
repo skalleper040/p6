@@ -4,7 +4,7 @@ public class Test {
 	public static void main(String[] args) {
 		int[] arr1 = { 4, 5, 2, 6, 1, 2, 7 };
 		int[] arr2 = { 1, 2, 3, 4, 5, 6, 7 };
-
+		//Testar att lägga till kommentar
 		Array7 a71 = new Array7();
 		Array7 a72 = new Array7(arr1);
 		Array7 a73 = new Array7(a72);
