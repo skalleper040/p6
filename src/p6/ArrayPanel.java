@@ -28,6 +28,6 @@ public class ArrayPanel extends JPanel {
 	}
 	
 	public void setArrLabel(int row, int col, int val) {
-		arrLabels[row][col].setText(""+val);
+		this.arrLabels[row][col].setText(""+val);
 	}
 }
