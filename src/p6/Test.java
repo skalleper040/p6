@@ -4,7 +4,7 @@ public class Test {
 	public static void main(String[] args) {
 		int[] arr1 = { 4, 5, 2, 6, 1, 2, 7 };
 		int[] arr2 = { 1, 2, 3, 4, 5, 6, 7 };
-		//Testar att lägga till kommentar
+
 		Array7 a71 = new Array7();
 		Array7 a72 = new Array7(arr1);
 		Array7 a73 = new Array7(a72);
@@ -37,7 +37,7 @@ public class Test {
 		}
 		System.out.println();
 
-		int[][] mat1 = { { 1, 1, 1, 1, 1, 1, 1 }, { 2, 2, 2, 2, 2, 2, 2 }, { 3, 3, 3, 3, 3, 3, 3 },
+		int[][] mat1 = { { 1, 2, 3, 4, 5, 6, 7 }, { 2, 2, 2, 2, 2, 2, 2 }, { 3, 3, 3, 3, 3, 3, 3 },
 				{ 4, 4, 4, 4, 4, 4, 4 }, { 5, 5, 5, 5, 5, 5, 5 }, { 6, 6, 6, 6, 6, 6, 6 }, { 7, 7, 7, 7, 7, 7, 7 } };
 		Array7x7 a771 = new Array7x7();
 		Array7x7 a772 = new Array7x7(mat1);
@@ -57,6 +57,15 @@ public class Test {
 		a771.setRow(6, a773.getRow(6));
 
 		System.out.println("a771:\n" + a771 + "\n");
+		System.out.println();
+		
+		a771.shiftHorizontal('l');
+		
+		System.out.println("a771:\n" + a771 + "\n");
+		
+		
+		
+		
 	}
 
 }
