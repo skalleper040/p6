@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 public class Test1UI extends JFrame{
 	private ArrayPanel arrayPanel = new ArrayPanel(7,7,250,200);
 	private ColPanel leftColPanel = new ColPanel(7, 20, 200);
-	private RowPanel botRowPanel = new RowPanel(7, 200, 20);
+	private RowPanel botRowPanel = new RowPanel(7, 200, 30);
 	
 	private JPanel mainPanel = new JPanel();
 	private JPanel buttonPanel = new JPanel();
