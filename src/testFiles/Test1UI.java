@@ -25,7 +25,7 @@ public class Test1UI extends JFrame{
 		createButtonPanel();
 		
 		add (mainPanel, BorderLayout.CENTER);
-		add (buttonPanel, BorderLayout.SOUTH);
+
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
