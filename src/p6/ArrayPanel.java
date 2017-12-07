@@ -9,13 +9,13 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class ArrayPanel extends JPanel {
-	private JLabel arrLabels[][];
+	private JLabel arrLabels[][] = new JLabel[7][7];
 	
 	public ArrayPanel(int rows, int cols, int width, int height) {
 		setPreferredSize(new Dimension(width,height));
 		setLayout(new GridLayout(rows,cols,4,4));
 		setBorder(new EmptyBorder(0,20,0,20));
-		JLabel arrLabels[][] = new JLabel[rows][cols];
+		//arrLabels[][] = new JLabel[rows][cols];
 		
 		for (int row=0; row<rows; row++) {
 			for (int col=0; col<cols; col++) {
