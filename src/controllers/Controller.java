@@ -40,9 +40,17 @@ public class Controller {
 		demo.setController(this);
 	}
 	
-	public Controller(Test2UI ui, Array7x7 a772) {
+	public Controller(Test2UI ui, Array7x7 array) {
 		this.ui = ui;
-		this.array = a772;
+		this.array = array;
+		this.rightColumn = array.getCol(6);
+		this.leftColumn = array.getCol(0);
+		for (int i=0; i<7; i++) {
+			ui.setColTextField('r', i, this.rightColumn.getElement(i));
+		}
+		for (int i=0; i<7; i++) {
+			ui.setColTextField('l', i, this.leftColumn.getElement(i));
+		}
 		ui.setController(this);
 		showArray();
 	}
@@ -68,9 +76,8 @@ public class Controller {
 			}
 			this.array.setCol(0, this.rightColumn);
 			for (int i=0; i<7; i++) {
-				this.ui.setColTextField('r', i, this.rightColumn.getElement(i));
+				ui.setColTextField('r', i, this.rightColumn.getElement(i));
 			}
-			
 		}
 		
 		else if(direction == 'l') {
@@ -79,11 +86,12 @@ public class Controller {
 				Array7 colToBeMoved = this.array.getCol(i);
 				this.array.setCol(i-1, colToBeMoved);
 			}
-			array.setCol(array.toIntArray().length-1, this.rightColumn);
+			this.array.setCol(array.toIntArray().length-1, this.leftColumn);
 			for (int i=0; i<7; i++) {
-				this.ui.setColTextField('l', i, this.leftColumn.getElement(i));
+				ui.setColTextField('l', i, this.leftColumn.getElement(i));
 			}
 		}
+		showArray();
 	}
 	
 	private void show(int[][] arr) {

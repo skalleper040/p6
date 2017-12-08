@@ -81,7 +81,9 @@ public class Test2UI extends JFrame implements ActionListener {
 		if (e.getSource() == leftButton) {
 			controller.shiftHorizontal('l');
 		}
-		
+		if (e.getSource() == rightButton) {
+			controller.shiftHorizontal('r');
+		}
 	}
 	
 	
