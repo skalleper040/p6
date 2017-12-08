@@ -29,6 +29,10 @@ public class ColPanel extends JPanel {
 		this.colTextFields[row].setText(""+val);
 	}
 	
+	/**
+	 * Byter text på kolumnen av JLabels
+	 * @param array Array7-objekt
+	 */
 	public void setCol(Array7 array) {
 		for (int i=0; i<7; i++) {
 			colTextFields[i].setText(""+array.getElement(i));
