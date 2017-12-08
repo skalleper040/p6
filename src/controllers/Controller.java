@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 
 import p6.*;
 import resources.*;
+import testFiles.Test2UI;
 
 public class Controller {
 	private Timer timer;
@@ -69,24 +70,32 @@ public class Controller {
 	 */
 	public void shiftHorizontal(char direction) {
 		if (direction == 'r') {
+			
 			this.rightColumn = this.array.getCol(array.toIntArray().length-1);
 			for (int i=array.toIntArray().length-2; i>=0; i--) {
 				Array7 colToBeMoved = this.array.getCol(i);
 				this.array.setCol(i+1, colToBeMoved);
 			}
+			
 			this.array.setCol(0, this.rightColumn);
+			this.rightColumn = this.array.getCol(0);
+			
 			for (int i=0; i<7; i++) {
 				ui.setColTextField('r', i, this.rightColumn.getElement(i));
 			}
 		}
 		
 		else if(direction == 'l') {
+			
 			this.leftColumn = this.array.getCol(0);
 			for(int i=1; i<array.toIntArray().length; i++) {
 				Array7 colToBeMoved = this.array.getCol(i);
 				this.array.setCol(i-1, colToBeMoved);
 			}
+			
 			this.array.setCol(array.toIntArray().length-1, this.leftColumn);
+			this.leftColumn = this.array.getCol(6);
+			
 			for (int i=0; i<7; i++) {
 				ui.setColTextField('l', i, this.leftColumn.getElement(i));
 			}

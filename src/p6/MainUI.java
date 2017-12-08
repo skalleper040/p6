@@ -5,6 +5,7 @@ import javax.swing.SwingUtilities;
 import controllers.*;
 import resources.*;
 import testFiles.*;
+import testFiles.Test2UI;
 
 public class MainUI {
 	public static void main(String[] args) {

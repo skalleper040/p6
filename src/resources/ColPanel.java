@@ -14,6 +14,7 @@ public class ColPanel extends JPanel {
 		setLayout(new GridLayout(rows,1,4,4));
 		for (int row=0; row<rows; row++) {
 			colTextFields[row] = new JTextField("0");
+			colTextFields[row].setHorizontalAlignment(JTextField.CENTER);
 			add(colTextFields[row]);
 		}
 	}
