@@ -35,6 +35,7 @@ public class Test2UI extends JFrame implements ActionListener {
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		//en go kommentar!
 	}
 	
 	public void setController(Controller controller) {
