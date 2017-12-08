@@ -16,7 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import controllers.Controller;
 import controllers.Test1UIController;
+import resources.Array7;
 import resources.ArrayPanel;
 import resources.ColPanel;
 import resources.RowPanel;
@@ -43,9 +45,9 @@ public class Test1UI extends JFrame implements ActionListener{
 	private JTextField rowNbr = new JTextField();
 	private JTextField colNbr = new JTextField();
 	
-	public Test1UI(Test1UIController controller) {
-		this.controller = controller;
-		this.controller.setUserInput(this);
+	public Test1UI() {
+		
+		//this.controller.setUserInput(this);
 		createMainPanel();
 		createButtonPanel();
 		addListeners();
@@ -92,26 +94,46 @@ public class Test1UI extends JFrame implements ActionListener{
 		this.readCol.addActionListener(this);
 		this.writeCol.addActionListener(this);
 	}
-	
-	public static void main(String[] args) {
-		Test1UI ui1 = new Test1UI();
+	public void setController(Test1UIController controller) {
+		this.controller = controller;
 	}
-
-	@Override
+	
+	public void setArrLabels(int row, int col, int val) {
+		this.arrayPanel.setArrLabel(row, col, val);
+	}
+	
+	public int getRowNbr() {
+		return Integer.parseInt(rowNbr.getText());
+	}
+	
+	public void setBotRow(Array7 array) {
+		botRowPanel.setRow(array);
+	}
+	
+	public int getColNbr() {
+		return Integer.parseInt(colNbr.getText());
+	}
+	
+	public void setLeftCol(Array7 array) {
+		leftColPanel.setCol(array);
+	}
+	
+	public Array7 getBotRow() {
+		return new Array7(botRowPanel.getRow());
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.readRow) {
-			///Read row
+			controller.read(true);
 		}
 		if(e.getSource() == this.readCol) {
-			///Read row
+			controller.read(false);
 		}
 		if(e.getSource() == this.writeRow) {
-			///Read row
+			controller.write(true);
 		}
 		if(e.getSource() == this.writeCol) {
-			///Read row
+			controller.write(false);
 		}
-		// TODO Auto-generated method stub
-		
 	}
 }

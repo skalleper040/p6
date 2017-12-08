@@ -27,5 +27,11 @@ public class ColPanel extends JPanel {
 	public void setColTextField(int row, int val) {
 		this.colTextFields[row].setText(""+val);
 	}
+	
+	public void setCol(Array7 array) {
+		for (int i=0; i<7; i++) {
+			colTextFields[i].setText(""+array.getElement(i));
+		}
+	}
 }
 
