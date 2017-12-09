@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 
 import p6.*;
 import resources.*;
+import testFiles.*;
 
 public class Controller {
 	private Timer timer;
@@ -69,6 +70,9 @@ public class Controller {
 	 */
 	public void shiftHorizontal(char direction) {
 		if (direction == 'r') {
+			
+			
+			this.rightColumn = 
 			
 			this.rightColumn = this.array.getCol(array.toIntArray().length-1);
 			for (int i=array.toIntArray().length-2; i>=0; i--) {

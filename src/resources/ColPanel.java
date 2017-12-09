@@ -38,5 +38,13 @@ public class ColPanel extends JPanel {
 			colTextFields[i].setText(""+array.getElement(i));
 		}
 	}
+	
+	public int[] getCol() {
+		int[] res = new int[7];
+		for (int i=0; i<7; i++) {
+			res[i] = Integer.parseInt(colTextFields[i].getText());
+		}
+		return res;
+	}
 }
 
