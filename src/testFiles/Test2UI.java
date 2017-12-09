@@ -74,6 +74,16 @@ public class Test2UI extends JFrame implements ActionListener {
 		}
 	}
 	
+	public Array7 getCol(char direction) {
+		if (direction == 'r') {
+			return new Array7(rightColPanel.getCol());
+		}
+		else if (direction == 'l') {
+			return new Array7(leftColPanel.getCol());
+		}
+		return null;
+	}
+	
 	public void updateDisplay() {
 		
 	}
