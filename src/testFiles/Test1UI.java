@@ -46,10 +46,10 @@ public class Test1UI extends JFrame implements ActionListener{
 	private JTextField colNbr = new JTextField();
 	
 	public Test1UI() {
-		
+		setPreferredSize(new Dimension(800,600));
 		//this.controller.setUserInput(this);
 		createMainPanel();
-		createButtonPanel();
+		createButtonPanel();	
 		addListeners();
 		
 		add (mainPanel, BorderLayout.CENTER);
@@ -69,14 +69,16 @@ public class Test1UI extends JFrame implements ActionListener{
 	}
 	
 	public void createButtonPanel() {
-		buttonPanel.setPreferredSize(new Dimension(150,200));
+		//buttonPanel.setPreferredSize(new Dimension(200,200));
 		buttonRowPanel.setLayout(new GridLayout(4,1,0,10));
 		buttonRowPanel.add(rowText);
+		rowNbr.setHorizontalAlignment(JTextField.CENTER);
 		buttonRowPanel.add(rowNbr);
 		buttonRowPanel.add(readRow);
 		buttonRowPanel.add(writeRow);
 		
 		buttonColPanel.add(colText);
+		colNbr.setHorizontalAlignment(JTextField.CENTER);
 		buttonColPanel.add(colNbr);
 		buttonColPanel.add(readCol);
 		buttonColPanel.add(writeCol);
@@ -121,6 +123,11 @@ public class Test1UI extends JFrame implements ActionListener{
 	public Array7 getBotRow() {
 		return new Array7(botRowPanel.getRow());
 	}
+	
+	public Array7 getLeftCol() {
+		return new Array7(leftColPanel.getCol());
+	}
+	
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.readRow) {

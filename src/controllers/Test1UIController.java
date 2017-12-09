@@ -2,34 +2,39 @@ package controllers;
 
 import javax.swing.SwingUtilities;
 
-
+import resources.Array7;
 import resources.Array7x7;
 import testFiles.Test1UI;
 
 public class Test1UIController {
 	private Test1UI test1ui;
 	private Array7x7 array;
-
+	private Array7 leftColum;
+	private Array7 bottomRow;
 	
 	public Test1UIController(Test1UI test1ui, Array7x7 array) {
 		this.test1ui = test1ui;
 		this.array = array;
 		
-		test1ui.setController(this);
+		this.test1ui.setController(this);
 		showArray();
 	}
 	
 	public void read(boolean row) {
 		if(row) {
-			test1ui.setBotRow(array.getRow(test1ui.getRowNbr()-1));
+			bottomRow = array.getRow(test1ui.getRowNbr()-1);
+			test1ui.setBotRow(bottomRow);
 		}else {
-			test1ui.setLeftCol(array.getCol(test1ui.getColNbr()-1));
+			leftColum = array.getCol(test1ui.getColNbr()-1);
+			test1ui.setLeftCol(leftColum);
 		}
 	}
 	
 	public void write(boolean row) {
 		if(row) {
 			array.setRow(test1ui.getRowNbr()-1, test1ui.getBotRow());
+		}else {
+			array.setCol(test1ui.getColNbr()-1, test1ui.getLeftCol());
 		}
 		
 		showArray();
@@ -62,6 +67,11 @@ public class Test1UIController {
 				Test1UIController controller = new Test1UIController(t2, a772);
 			}
 		});
+	}
+
+	public void setUserInput(Test1UI test1ui) {
+		this.test1ui = test1ui;
+		
 	}
 	
 	

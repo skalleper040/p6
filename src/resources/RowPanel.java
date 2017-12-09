@@ -18,6 +18,7 @@ public class RowPanel extends JPanel {
 		
 		for (int col=0; col<cols; col++) {
 			colTextFields[col] = new JTextField("0");
+			colTextFields[col].setHorizontalAlignment(JTextField.CENTER);
 			add(colTextFields[col]);
 		}
 	}
@@ -35,4 +36,6 @@ public class RowPanel extends JPanel {
 		}
 		return res;
 	}
+	
+
 }
