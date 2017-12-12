@@ -82,7 +82,7 @@ public class Controller {
 		if (direction == 'r') {
 
 			// Sparar undan innehållet som finns i textfieldsen just nu
-			Array7 tmpRightColumn = this.ui.getCol('r');
+			Array7 tmpLeftColumn = this.ui.getCol('l');
 			
 			// Lägger sista kolumnen i array7x7 i arrayen rightColumn
 			this.rightColumn = this.array.getCol(array.toIntArray().length - 1);
@@ -99,12 +99,12 @@ public class Controller {
 			}
 			
 			// Lägg in de undansparade värdena från textfieldsen till den första kolumnen i array7x7
-			this.array.setCol(0, tmpRightColumn);
+			this.array.setCol(0, tmpLeftColumn);
 		}
 
 		else if (direction == 'l') {
 
-			Array7 tmpLeftColumn = this.ui.getCol('l');
+			Array7 tmpRightColumn = this.ui.getCol('r');
 			this.leftColumn = this.array.getCol(0);
 			for (int i = 0; i < 7; i++) {
 				ui.setColTextField('l', i, this.leftColumn.getElement(i));
@@ -115,7 +115,7 @@ public class Controller {
 				this.array.setCol(i - 1, colToBeMoved);
 			}
 
-			this.array.setCol(array.toIntArray().length-1, tmpLeftColumn);
+			this.array.setCol(array.toIntArray().length-1, tmpRightColumn);
 		}
 		
 		// Uppdatera den grafiska arrayen
