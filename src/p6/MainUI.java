@@ -21,16 +21,6 @@ public class MainUI {
 		Array7x7 a771 = new Array7x7();
 		Array7x7 a772 = new Array7x7(mat1);
 		Array7x7 a773 = new Array7x7(a771);
-		
-		try {
-		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		        if ("Nimbus".equals(info.getName())) {
-		            UIManager.setLookAndFeel(info.getClassName());
-		            break;
-		        }
-		    }
-		} catch (Exception e) {
-		}
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
