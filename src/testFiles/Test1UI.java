@@ -128,7 +128,6 @@ public class Test1UI extends JFrame implements ActionListener{
 		return new Array7(leftColPanel.getCol());
 	}
 	
-	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.readRow) {
 			controller.read(true);
