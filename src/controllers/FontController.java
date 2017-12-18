@@ -32,6 +32,14 @@ public class FontController {
 		}
 	}
 
+	public void reset() {
+		for (int row=0; row<7; row++) {
+			for (int col=0; col<7; col++) {
+				array.setElement(row, col, 0);
+			}
+		}
+	}
+
 	public void toText(String s) throws FileNotFoundException, UnsupportedEncodingException {
 		String string = "private static int[][] char"+s+" = {\r\n";
 		for (int row=0; row<7; row++) {
@@ -58,14 +66,14 @@ public class FontController {
 		} 
 		toTextInverted(s);
 	}
-	
+
 	public void toTextInverted(String s) throws FileNotFoundException, UnsupportedEncodingException {
 		String string = "private static int[][] char"+s+"Inverted = {\r\n";
 		for (int row=0; row<7; row++) {
 			if(this.array.getElement(row, 0) == 1) {
-				string+="0";
+				string+="{0";
 			}else {
-				string +="1";
+				string +="{1";
 			}
 			for (int col=1; col<7; col++) {
 				string +=",";

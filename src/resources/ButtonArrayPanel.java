@@ -29,7 +29,7 @@ public class ButtonArrayPanel extends JPanel{
 			}
 		}
 	}
-	
+
 	public JButton getButton(int row, int col) {
 		return arrLabels[row][col];
 	}
@@ -41,5 +41,12 @@ public class ButtonArrayPanel extends JPanel{
 			arrLabels[row][col].setBackground(Color.WHITE);
 		}
 	}
-	
+
+	public void reset() {
+		for (int row=0; row<7; row++) {
+			for (int col=0; col<7; col++) {
+				arrLabels[row][col].setBackground(Color.WHITE);
+			}
+		}
+	}
 }

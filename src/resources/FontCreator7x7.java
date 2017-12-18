@@ -23,7 +23,7 @@ public class FontCreator7x7 extends JFrame implements ActionListener{
 	private FontController controller;
 	private JTextField letter = new JTextField();
 	private JButton read = new JButton("Skriv till c:\\output.txt");
-	
+	private JButton reset = new JButton("Reset");
 	public FontCreator7x7() {
 		//this.setPreferredSize(new Dimension(900,900));
 		this.setLayout(new BorderLayout());
@@ -34,6 +34,8 @@ public class FontCreator7x7 extends JFrame implements ActionListener{
 		this.add(letter, BorderLayout.SOUTH);
 		this.add(read, BorderLayout.WEST);
 		read.addActionListener(this);
+		this.add(reset, BorderLayout.NORTH);
+		reset.addActionListener(this);
 		for (int row=0; row<7; row++) {
 			for (int col=0; col<7; col++) {
 				this.buttonArrayPanel.getButton(row, col).addActionListener(this);
@@ -52,9 +54,17 @@ public class FontCreator7x7 extends JFrame implements ActionListener{
 	public void clickedOn(int row, int col) {
 		buttonArrayPanel.clickedOn(row, col);
 	}
+	
+	public void reset() {
+		this.buttonArrayPanel.reset();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == this.reset) {
+			this.reset();
+			controller.reset();
+		}
 		if(e.getSource() == this.read) {
 			try {
 				this.controller.toText(this.letter.getText());
