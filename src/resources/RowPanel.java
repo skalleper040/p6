@@ -10,6 +10,13 @@ import javax.swing.border.EmptyBorder;
 public class RowPanel extends JPanel {
 	private JTextField[] colTextFields; 
 	
+	/**
+	 * Constructor, creates a row for bot
+	 * @param cols		Number of labels
+	 * @param width		width
+	 * @param height	Height
+	 */
+	
 	public RowPanel (int cols, int width, int height) {
 		colTextFields = new JTextField[cols];
 		setPreferredSize(new Dimension(width,height));
@@ -23,12 +30,20 @@ public class RowPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Set Row-method
+	 * @param array array7
+	 */
 	public void setRow(Array7 array) {
 		for (int i=0; i<7; i++) {
 			colTextFields[i].setText(""+array.getElement(i));
 		}
 	}
 	
+	/**
+	 * Get row-method
+	 * @return Bot row as 7x1 array
+	 */
 	public int[] getRow() {
 		int[] res = new int[7];
 		for (int i=0; i<7; i++) {

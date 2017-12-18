@@ -6,12 +6,23 @@ import resources.Array7;
 import resources.Array7x7;
 import testFiles.Test1UI;
 
+/**
+ * Controller to the Test1UI class
+ * 
+ * @author Johannes, Angelina
+ *
+ */
 public class Test1UIController {
 	private Test1UI test1ui;
 	private Array7x7 array;
 	private Array7 leftColum;
 	private Array7 bottomRow;
 	
+	/**
+	 * Constructor 
+	 * @param test1ui	Test1UI object
+	 * @param array		7x7 Array
+	 */
 	public Test1UIController(Test1UI test1ui, Array7x7 array) {
 		this.test1ui = test1ui;
 		this.array = array;
@@ -20,6 +31,11 @@ public class Test1UIController {
 		showArray();
 	}
 	
+	/**
+	 * Read-method, called in the Test1UI-class. 
+	 * Input as a boolean, True for bottom row, false for leftColum
+	 * @param row
+	 */
 	public void read(boolean row) {
 		if(row) {
 			bottomRow = array.getRow(test1ui.getRowNbr()-1);
@@ -30,6 +46,11 @@ public class Test1UIController {
 		}
 	}
 	
+	/**
+	 * Write-method, called in the Test1UI-class. 
+	 * Input as a boolean, True for bottom row, false for leftColum
+	 * @param row
+	 */
 	public void write(boolean row) {
 		if(row) {
 			array.setRow(test1ui.getRowNbr()-1, test1ui.getBotRow());
@@ -40,7 +61,10 @@ public class Test1UIController {
 		showArray();
 	}
 	
-	
+	/**
+	 * Printing the complete array
+	 * 
+	 */
 	public void showArray() {
 		for (int row=0; row<7; row++) {
 			for (int col=0; col<7; col++) {

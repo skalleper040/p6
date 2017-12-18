@@ -46,7 +46,7 @@ public class Test1UI extends JFrame implements ActionListener{
 	private JTextField colNbr = new JTextField();
 	
 	public Test1UI() {
-		setPreferredSize(new Dimension(800,600));
+		setPreferredSize(new Dimension(1800,600));
 		//this.controller.setUserInput(this);
 		createMainPanel();
 		createButtonPanel();	
@@ -59,6 +59,9 @@ public class Test1UI extends JFrame implements ActionListener{
 		setVisible(true);
 	}
 	
+	/**
+	 * Creates main-layout
+	 */
 	public void createMainPanel() {
 		mainPanel.setPreferredSize(new Dimension(400,300));
 		mainPanel.setLayout(new BorderLayout());
@@ -68,8 +71,10 @@ public class Test1UI extends JFrame implements ActionListener{
 		mainPanel.setBorder(new EmptyBorder(30,30,30,30));
 	}
 	
+	/**
+	 * Creates the layout for the buttons on the right side. 
+	 */
 	public void createButtonPanel() {
-		//buttonPanel.setPreferredSize(new Dimension(200,200));
 		buttonRowPanel.setLayout(new GridLayout(4,1,0,10));
 		buttonRowPanel.add(rowText);
 		rowNbr.setHorizontalAlignment(JTextField.CENTER);
@@ -90,44 +95,82 @@ public class Test1UI extends JFrame implements ActionListener{
 		buttonPanel.setBorder(new EmptyBorder(30,30,30,30));
 	}
 	
+	/**
+	 * Adds listeners to all buttons
+	 */
 	private void addListeners() {
 		this.readRow.addActionListener(this);
 		this.writeRow.addActionListener(this);
 		this.readCol.addActionListener(this);
 		this.writeCol.addActionListener(this);
 	}
+	
 	public void setController(Test1UIController controller) {
 		this.controller = controller;
 	}
 	
+	/**
+	 * Updates the value in selected position
+	 * @param row	Row
+	 * @param col	Column
+	 * @param val	Value for selected position
+	 */
 	public void setArrLabels(int row, int col, int val) {
 		this.arrayPanel.setArrLabel(row, col, val);
 	}
 	
+	/**
+	 * Returns value in the Row-number label
+	 * @return Row-number
+	 */
 	public int getRowNbr() {
 		return Integer.parseInt(rowNbr.getText());
 	}
 	
+	/**
+	 * Sets Bottom Row
+	 * @param array Array7 array
+	 */
 	public void setBotRow(Array7 array) {
 		botRowPanel.setRow(array);
 	}
 	
+	/**
+	 * Returns value in the Col-number label
+	 * @return Col-number
+	 */
 	public int getColNbr() {
 		return Integer.parseInt(colNbr.getText());
 	}
 	
+	/**
+	 * Sets Left Column
+	 * @param array Array7 array
+	 */
 	public void setLeftCol(Array7 array) {
 		leftColPanel.setCol(array);
 	}
 	
+	/**
+	 * Get-method for bottom row
+	 * @return Bottom row-labels as array7
+	 */
 	public Array7 getBotRow() {
 		return new Array7(botRowPanel.getRow());
 	}
 	
+	/**
+	 * Get method for left column
+	 * @return Left column as array7
+	 */
 	public Array7 getLeftCol() {
 		return new Array7(leftColPanel.getCol());
 	}
 	
+	/**
+	 * Action-method.
+	 * Always calls the controller.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.readRow) {
 			controller.read(true);

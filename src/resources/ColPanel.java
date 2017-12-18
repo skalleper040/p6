@@ -9,6 +9,12 @@ import javax.swing.JTextField;
 public class ColPanel extends JPanel {
 	private JTextField[] colTextFields = new JTextField[7];
 	
+	/**
+	 * Constructor, creates a col of labels
+	 * @param cols		Number of labels
+	 * @param width		Width
+	 * @param height	Height
+	 */
 	public ColPanel (int rows, int width, int height) {
 		setPreferredSize(new Dimension(width,height));
 		setLayout(new GridLayout(rows,1,4,4));
@@ -38,6 +44,11 @@ public class ColPanel extends JPanel {
 			colTextFields[i].setText(""+array.getElement(i));
 		}
 	}
+	
+	/**
+	 * Get column method
+	 * @return Left column as a 7x1 array
+	 */
 	
 	public int[] getCol() {
 		int[] res = new int[7];
