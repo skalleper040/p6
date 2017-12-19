@@ -18,6 +18,8 @@ public class FlowingController {
 		for(int i = 0; i < text.length();i++) {
 			System.out.println(text.substring(i, i+1));
 		}
+		
+		
 	}
 	
 

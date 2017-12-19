@@ -28,5 +28,15 @@ public class FlowingArrayPanel extends JPanel{
 			}
 		}
 	}
+	
+	public void printCol(Array7 arr, int col) {
+		for(int i = 0; i<7; i++) {
+			if(arr.getElement(i)==1) {
+				arrLabels[i][col].setBackground(Color.BLACK);
+			}else {
+				arrLabels[i][col].setBackground(Color.PINK);
+			}
+		}
+	}
 
 }
