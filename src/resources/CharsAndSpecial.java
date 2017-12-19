@@ -7,7 +7,7 @@ package resources;
  *         Specialtecken: charExMark = !, charQuestion = ?, charDot = .,
  *         charComma = , , charSpace = , charEquals = =, charHasTag = # ,
  *         charParL = (, charParR = ), charMinus = -, charUnderScore = _ ,
- *         charUnKnown = Okänt tecken.
+ *         charUnKnown = Okänt tecken..
  * 
  *
  */
