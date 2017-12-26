@@ -48,12 +48,19 @@ public class Controller {
 		this.demo = demo;
 		demo.setController(this);
 	}
-
+	
+	/**
+	 * Konstruktor
+	 * @param ui bestämmer vilket ui som används
+	 * @param array bestämmer vilket Array7x7-objekt som ska användas
+	 */
 	public Controller(Test2UI ui, Array7x7 array) {
 		this.ui = ui;
 		this.array = array;
-		this.rightColumn = array.getCol(6);
-		this.leftColumn = array.getCol(0);
+		this.rightColumn = array.getCol(6); // Sparar undan den sista arrayen i 7x7-objektet
+		this.leftColumn = array.getCol(0); // Sparar undan den första arrayen 7x7-objektet
+		
+		// Sätter värdena ifrån rightColumn och leftColumn i textFields i UI
 		for (int i = 0; i < 7; i++) {
 			ui.setColTextField('r', i, this.rightColumn.getElement(i));
 		}
@@ -64,6 +71,9 @@ public class Controller {
 		showArray();
 	}
 
+	/**
+	 * Uppdaterar JLabels i UI med rätt värde från given array
+	 */
 	public void showArray() {
 		for (int row = 0; row < 7; row++) {
 			for (int col = 0; col < 7; col++) {

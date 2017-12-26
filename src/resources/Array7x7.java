@@ -169,29 +169,4 @@ public class Array7x7 {
 		return result;
 
 	}
-	
-	/**
-	 * Skiftar innehållet till höger eller vänster.
-	 * @param direction bestämmer riktninngen
-	 */
-	
-	public void shiftHorizontal(char direction) {
-		if (direction == 'r') {
-			Array7 farRight = this.getCol(this.elements.length-1);
-			for (int i=elements.length-2; i>=0; i--) {
-				Array7 colToBeMoved = this.getCol(i);
-				this.setCol(i+1, colToBeMoved);
-			}
-			this.setCol(0, farRight);
-		}
-		
-		else if(direction == 'l') {
-			Array7 farLeft = this.getCol(0);
-			for(int i=1; i<elements.length; i++) {
-				Array7 colToBeMoved = this.getCol(i);
-				this.setCol(i-1, colToBeMoved);
-			}
-			this.setCol(elements.length-1, farLeft);
-		}
-	}
 }
