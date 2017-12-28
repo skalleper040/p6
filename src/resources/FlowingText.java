@@ -21,7 +21,7 @@ public class FlowingText extends JFrame implements ActionListener {
 	private FlowingArrayPanel flowingArrayPanel = new FlowingArrayPanel(35);
 	private JPanel mainPanel = new JPanel();
 	
-	private String[] dropDown = {"Blinkande","Vänster","Höger","Ner","Upp"};
+	private String[] dropDown = {"Blinkande","Vänster","Höger","Spelvänt","Ner","Upp"};
 	private JComboBox dropList = new JComboBox(dropDown);
 	
 

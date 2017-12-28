@@ -73,11 +73,17 @@ public class FlowingController {
 					}
 					flowingText.shiftRight();
 				}
-
+				
+				if(direction == 3) {
+					if(charCounter < text.length()) {
+						flowingText.printCol(Chars.getChar(text.charAt(charCounter)).getCol(counter),0);
+					}
+					flowingText.shiftRight();
+				}
 				
 				counter++;
 				if(charCounter == text.length()+5) {
-					//cancel();
+					cancel();
 					charCounter = 0;
 				}
 			}
