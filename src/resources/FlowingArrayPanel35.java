@@ -1,27 +1,24 @@
 package resources;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+public class FlowingArrayPanel35 extends JPanel{
+	private JLabel arrLabels[][] = new JLabel[7][35];
 
-public class FlowingArrayPanel extends JPanel{
-	private JLabel arrLabels[][];
-
-	public FlowingArrayPanel(int cols) {
-		arrLabels = new JLabel[7][cols];
-		setPreferredSize(new Dimension(cols * 350/7, 350));
-		setLayout(new GridLayout(7,cols,1,1));
+	public FlowingArrayPanel35(int cols) {
+		setPreferredSize(new Dimension(400,35*400/7));
+		setLayout(new GridLayout(7,35,1,1));
 		setBorder(new EmptyBorder(0,0,0,0));
 
 
 		for (int row=0; row<7; row++) {
-			for (int col=0; col<cols; col++) {
+			for (int col=0; col<35; col++) {
 				arrLabels[row][col] = new JLabel();
 				arrLabels[row][col].setBackground(Color.PINK);
 				arrLabels[row][col].setOpaque(true);
@@ -30,25 +27,6 @@ public class FlowingArrayPanel extends JPanel{
 		}
 	}
 
-	public Array7 readCol(int col) {
-		Array7 arr = new Array7();
-		for(int i = 0; i<7;i++) {
-			if(arrLabels[i][col].getBackground() == Color.BLACK) {
-				arr.setElement(i, 1);
-			}else {
-				arr.setElement(i,0);
-			}
-		}
-		return arr;
-	}
-	
-	public void shiftLeft() {
-		for(int i = 1; i <= 34; i++ ) {
-			printCol(readCol(i), i-1);
-		}
-		
-	}
-	
 	public void printCol(Array7 arr, int col) {
 		for(int i = 0; i<7; i++) {
 			if(arr.getElement(i)==1) {
@@ -66,5 +44,4 @@ public class FlowingArrayPanel extends JPanel{
 		arrLabels[row][col].setBackground(Color.PINK);
 
 }
-
 }

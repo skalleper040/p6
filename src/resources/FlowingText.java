@@ -7,6 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -17,10 +18,12 @@ import controllers.FontController;
 
 public class FlowingText extends JFrame implements ActionListener {
 	private FlowingController controller;
-	private FlowingArrayPanel flowingArrayPanel = new FlowingArrayPanel();
+	private FlowingArrayPanel flowingArrayPanel = new FlowingArrayPanel(35);
 	private JPanel mainPanel = new JPanel();
-	private Timer timer = new Timer ();
-	TimerTask task;
+	
+	private String[] dropDown = {"Blinkande","Vänster","Höger","Ner","Upp"};
+	private JComboBox dropList = new JComboBox(dropDown);
+	
 
 
 	private JTextField words = new JTextField();
@@ -28,45 +31,48 @@ public class FlowingText extends JFrame implements ActionListener {
 
 	public FlowingText () {
 		this.setLayout(new BorderLayout());
-		this.add (mainPanel, BorderLayout.CENTER);
-		mainPanel.add (flowingArrayPanel, BorderLayout.CENTER);
+		this.add (flowingArrayPanel, BorderLayout.CENTER);
 		words.setHorizontalAlignment(JTextField.CENTER);
 		this.add(words, BorderLayout.SOUTH);
 		this.add(read, BorderLayout.WEST);
+		this.add(dropList, BorderLayout.NORTH);
 		read.addActionListener(this);
+		dropList.addActionListener(this);
+		dropList.setSelectedIndex(1);
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);	}
+		setVisible(true);	
+		}
 
 	public void setController(FlowingController controller) {
 		this.controller = controller;
 	}
-	public void printSquare (Array7x7 arr, int row, int col) {
-		flowingArrayPanel.printSquare(arr, row, col);
+	public void printSquareOn (int row, int col) {
+		flowingArrayPanel.printSquareOn(row, col);
+	}
+	
+	public void printSquareOff (int row, int col) {
+		flowingArrayPanel.printSquareOff(row, col);
+	}
+	
+	public void printCol(Array7 arr, int col) {
+		flowingArrayPanel.printCol(arr, col);
+	}
+	
+	public void shiftLeft() {
+		flowingArrayPanel.shiftLeft();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		task = new TimerTask() {
-			int counter = 0; 
-
-			@Override
-			public void run() {
-				if (counter < words.getText().length()) {
-					controller.printText(String.valueOf(words.getText().charAt(counter)));
-					System.out.println(counter);
-					counter++;
-				} else {
-					counter = 0;
-					cancel();
-				}
-			}
-		};
-
-		if(e.getSource() == read) {
-			
-			timer.schedule(task, words.getText().length()-2, 1000);
+		
+		if(e.getSource() == read && dropList.getSelectedIndex() == 0) {
+			controller.blink(words.getText());
+			//timer.schedule(task, words.getText().length(), 100);
 		}	
+		if(e.getSource()== read && dropList.getSelectedIndex() == 1) {
+			controller.scrollLeft(words.getText());
+		}
 	}	
 }
