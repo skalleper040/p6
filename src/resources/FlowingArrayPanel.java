@@ -28,7 +28,7 @@ public class FlowingArrayPanel extends JPanel{
 			}
 		}
 	}
-	
+
 	public void printCol(Array7 arr, int col) {
 		for(int i = 0; i<7; i++) {
 			if(arr.getElement(i)==1) {
@@ -36,6 +36,13 @@ public class FlowingArrayPanel extends JPanel{
 			}else {
 				arrLabels[i][col].setBackground(Color.PINK);
 			}
+		}
+	}
+	public void printSquare (Array7x7 arr, int row, int col) {
+		if (arr.getElement(row, col) == 1) {
+			arrLabels[row][col].setBackground(Color.MAGENTA);
+		} else {
+			arrLabels [row][col].setBackground(Color.PINK);
 		}
 	}
 
