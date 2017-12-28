@@ -49,6 +49,13 @@ public class FlowingArrayPanel extends JPanel{
 		
 	}
 	
+	public void shiftRight() {
+		for(int i = 33; i >= 0; i-- ) {
+			printCol(readCol(i), i+1);
+		}
+		
+	}
+	
 	public void printCol(Array7 arr, int col) {
 		for(int i = 0; i<7; i++) {
 			if(arr.getElement(i)==1) {

@@ -62,6 +62,10 @@ public class FlowingText extends JFrame implements ActionListener {
 	public void shiftLeft() {
 		flowingArrayPanel.shiftLeft();
 	}
+	
+	public void shiftRight() {
+		flowingArrayPanel.shiftRight();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -71,8 +75,8 @@ public class FlowingText extends JFrame implements ActionListener {
 			controller.blink(words.getText());
 			//timer.schedule(task, words.getText().length(), 100);
 		}	
-		if(e.getSource()== read && dropList.getSelectedIndex() == 1) {
-			controller.scrollLeft(words.getText());
+		if(e.getSource()== read && dropList.getSelectedIndex() != 0) {
+			controller.scrollLeft(words.getText(), dropList.getSelectedIndex());
 		}
 	}	
 }

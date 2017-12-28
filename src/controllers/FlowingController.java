@@ -12,7 +12,7 @@ public class FlowingController {
 	FlowingText flowingText;
 	private Timer timer = new Timer ();
 	private TimerTask task;
-	
+
 	public FlowingController(Array7x7 array, FlowingText flowingText) {
 		super();
 		this.array = array;
@@ -27,11 +27,11 @@ public class FlowingController {
 				}else {
 					flowingText.printSquareOff(i, j);	
 				}
-				
+
 			}
 		}
 	}
-	
+
 	public void blink(String text) {
 		task = new TimerTask() {
 			int counter = 0; 
@@ -47,40 +47,49 @@ public class FlowingController {
 				}
 			}
 		};
-		
+
 		timer.schedule(task, text.length(), 100);
 	}
-	
-	public void scrollLeft(String text) {
+
+	public void scrollLeft(String text, int direction) {
 		task = new TimerTask() {
 			int counter = 0;
-			int counter2 = -1;
+			int charCounter = -1;
 			public void run() {
 				if(counter%7 == 0) {
 					counter = 0;
-					counter2++;
+					charCounter++;
 				}
-				if(counter2 < text.length()) {
-					flowingText.printCol(Chars.getChar(text.charAt(counter2)).getCol(counter),34);
+				if(direction == 1) {
+					if(charCounter < text.length()) {
+						flowingText.printCol(Chars.getChar(text.charAt(charCounter)).getCol(counter),34);
+					}
+					flowingText.shiftLeft();
 				}
 				
-				flowingText.shiftLeft();
-						
+				if(direction == 2) {
+					if(charCounter < text.length()) {
+						flowingText.printCol(Chars.getChar(text.charAt(charCounter)).getCol(-(counter-6)),0);
+					}
+					flowingText.shiftRight();
+				}
+
+				
 				counter++;
-				if(counter2 == text.length()+5) {
-					cancel();
-					
+				if(charCounter == text.length()+5) {
+					//cancel();
+					charCounter = 0;
 				}
 			}
 		};
-		
+
 		timer.purge();
 		timer.schedule(task, 0, 50);
 	}
-	
+
 	public void printText(char c) {
-			printChar(Chars.getChar(c));
+		printChar(Chars.getChar(c));
 	}
-	
+
 
 }
