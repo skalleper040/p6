@@ -1,12 +1,21 @@
 package resources;
 
 import java.awt.Dimension;
+
+
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+
+/**
+ * Klassen används för att rita ut en panel med ett rutnät bestående av JLabels
+ * @author Oscar
+ *
+ */
 
 public class ArrayPanel extends JPanel {
 	private JLabel arrLabels[][] = new JLabel[7][7];

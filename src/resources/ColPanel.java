@@ -6,14 +6,20 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
+/**
+ * Klassen används för att skapa en panel med JTextFields
+ * @author Oscar
+ *
+ */
 public class ColPanel extends JPanel {
 	private JTextField[] colTextFields = new JTextField[7];
 	
 	/**
-	 * Constructor, creates a col of labels
-	 * @param cols		Number of labels
-	 * @param width		Width
-	 * @param height	Height
+	 * Konstruktor
+	 * @param rows antalet rader
+	 * @param width	bredden på panelen
+	 * @param height höjden på panelen
 	 */
 	public ColPanel (int rows, int width, int height) {
 		setPreferredSize(new Dimension(width,height));
@@ -47,7 +53,7 @@ public class ColPanel extends JPanel {
 	
 	/**
 	 * Get column method
-	 * @return Left column as a 7x1 array
+	 * @return kolumn som int-array
 	 */
 	
 	public int[] getCol() {
