@@ -12,6 +12,7 @@ public class FlowingController {
 	FlowingText flowingText;
 	private Timer timer = new Timer ();
 	private TimerTask task;
+	private String text;
 
 	public FlowingController(Array7x7 array, FlowingText flowingText) {
 		super();
@@ -32,7 +33,7 @@ public class FlowingController {
 		}
 	}
 
-	public void blink(String text) {
+	public void blink(String text, int delay) {
 		task = new TimerTask() {
 			int counter = 0; 
 
@@ -48,10 +49,20 @@ public class FlowingController {
 			}
 		};
 
-		timer.schedule(task, text.length(), 100);
+		timer.schedule(task, text.length(), delay);
+	}
+	
+	public void disableButtons() {
+		flowingText.disableButtons();
+	}
+	
+	public void enableButtons() {
+		flowingText.enableButtons();
 	}
 
-	public void scrollLeft(String text, int direction) {
+	public void scrollLeft(String text, int direction, int delay) {
+		disableButtons();
+		this.text = text;
 		task = new TimerTask() {
 			int counter = 0;
 			int charCounter = -1;
@@ -61,38 +72,51 @@ public class FlowingController {
 					charCounter++;
 				}
 				if(direction == 1) {
+					flowingText.shiftLeft();
 					if(charCounter < text.length()) {
 						flowingText.printCol(Chars.getChar(text.charAt(charCounter)).getCol(counter),34);
 					}
-					flowingText.shiftLeft();
+					
 				}
 				
 				if(direction == 2) {
+					flowingText.shiftRight();
 					if(charCounter < text.length()) {
 						flowingText.printCol(Chars.getChar(text.charAt(charCounter)).getCol(-(counter-6)),0);
 					}
-					flowingText.shiftRight();
+					
 				}
 				
 				if(direction == 3) {
+					flowingText.shiftRight();
 					if(charCounter < text.length()) {
 						flowingText.printCol(Chars.getChar(text.charAt(charCounter)).getCol(counter),0);
 					}
-					flowingText.shiftRight();
+					
 				}
 				
 				counter++;
 				if(charCounter == text.length()+5) {
+					enableButtons();
 					cancel();
-					charCounter = 0;
+					//charCounter = 0;
 				}
 			}
 		};
 
 		timer.purge();
-		timer.schedule(task, 0, 50);
+		timer.schedule(task, 0, delay);
 	}
 
+	public void shiftLeft(int counter, int charCounter) {
+		int test = 34;
+		for(int i = 0; i <5; i++ ) {
+			for(int j = 0; j <7; j++ ) {
+				flowingText.printCol(Chars.getChar(text.charAt(i)).getCol(j), test);
+				test--;
+			}
+		}
+	}
 	public void printText(char c) {
 		printChar(Chars.getChar(c));
 	}
