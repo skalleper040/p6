@@ -22,7 +22,7 @@ public class ColorController {
 
 	/**
 	 * Konstruktor vilken tar en klassen TestColor och Array7x7 som parametrar
-	 * @param testcolor refererar till ui som används
+	 * @param testcolor refererar till den ui som används
 	 * @param array refererar till det Array7x7-objekt som ska användas
 	 */
 	public ColorController(TestColor testcolor, Array7x7 array) {

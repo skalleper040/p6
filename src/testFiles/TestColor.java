@@ -30,7 +30,7 @@ public class TestColor extends JFrame implements ActionListener {
 	private JPanel gridPanel = new JPanel();
 	private JButton leftButton = new JButton("Flytta vänster");
 	private JButton rightButton = new JButton("Flytta höger");
-	private JButton SwapButton = new JButton("Växla position på två hörn");
+	private JButton SwapButton = new JButton("Växla position på hörn");
 	private JButton randomSwapButton = new JButton("Växla två randomiserade färger");
 
 	public TestColor() {
