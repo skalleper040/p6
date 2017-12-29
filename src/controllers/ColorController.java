@@ -39,7 +39,6 @@ public class ColorController {
 		for (int i = 0; i < 7; i++) {
 			testcolor.setColTextField('l', i, this.leftColumn.getElement(i));
 		}
-
 		testcolor.setColorController(this);
 		showArray();
 	}
