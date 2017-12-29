@@ -15,6 +15,12 @@ import controllers.Controller;
 import resources.*;
 import p6.*;
 
+
+/**
+ * UI som används i moment 3, uppgift 5.
+ * @author Oscar
+ *
+ */
 public class Test2UI extends JFrame implements ActionListener {
 
 	private Controller controller;
@@ -28,6 +34,9 @@ public class Test2UI extends JFrame implements ActionListener {
 	private JButton leftButton = new JButton("Flytta vänster");
 	private JButton rightButton = new JButton("Flytta höger");
 
+	/**
+	 * Konstruktor. Skapar paneler och lägger till dessa i JFramen
+	 */
 	public Test2UI() {
 		createMainPanel();
 		createButtonPanel();
@@ -36,13 +45,15 @@ public class Test2UI extends JFrame implements ActionListener {
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		//en go kommentar!
 	}
 	
 	public void setController(Controller controller) {
 		this.controller = controller;
 	}
 	
+	/**
+	 * Skapar den centrerade panelen som i sin tur innehåller paneler med JLabels och TextFields.
+	 */
 	public void createMainPanel() {
 		mainPanel.setPreferredSize(new Dimension(400,300));
 		mainPanel.setLayout(new BorderLayout());
@@ -52,6 +63,9 @@ public class Test2UI extends JFrame implements ActionListener {
 		mainPanel.setBorder(new EmptyBorder(30,30,30,30));
 	}
 	
+	/**
+	 * Skapar panel med JButtons
+	 */
 	public void createButtonPanel() {
 		buttonPanel.setLayout(new GridLayout(1,2,20,20));
 		buttonPanel.add(leftButton);
@@ -61,10 +75,22 @@ public class Test2UI extends JFrame implements ActionListener {
 		rightButton.addActionListener(this);
 	}
 	
+	/**
+	 * Set-metod för JLabels. Skickar allting vidare till metod som finns i arrayPanel-klassen.
+	 * @param row vilken rad
+	 * @param col vilken kolumn
+	 * @param val vilket värde
+	 */
 	public void setArrLabels(int row, int col, int val) {
 		this.arrayPanel.setArrLabel(row, col, val);
 	}
 	
+	/**
+	 * Set-metod för JTextFields. Skickar allting vidare till colPanel-klassen.
+	 * @param direction bestämmer om textfältet som ska ändras finns i höger eller vänster kolumn 
+	 * @param row vilken rad
+	 * @param val vilket värde
+	 */
 	public void setColTextField(char direction, int row, int val) {
 		if (direction == 'l') {
 			this.leftColPanel.setColTextField(row, val);
@@ -74,6 +100,11 @@ public class Test2UI extends JFrame implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Returnerar an Array7 med värdena som finns i en av textFields-kolumnerna
+	 * @param direction bestämmer om det är höger eller vänster kolumn
+	 * @return Array7
+	 */
 	public Array7 getCol(char direction) {
 		if (direction == 'r') {
 			return new Array7(rightColPanel.getCol());
@@ -83,12 +114,10 @@ public class Test2UI extends JFrame implements ActionListener {
 		}
 		return null;
 	}
-	
-	public void updateDisplay() {
-		
-	}
 
-	
+	/**
+	 * Används av JButtons. Anropar metod i controller.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == leftButton) {
 			controller.shiftHorizontal('l');

@@ -1,6 +1,8 @@
 package resources;
 
 import java.awt.Dimension;
+
+
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -8,8 +10,25 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Klassen används för att rita ut en panel med ett rutnät bestående av JLabels
+ * @author Oscar
+ *
+ */
+
 public class ArrayPanel extends JPanel {
 	private JLabel arrLabels[][] = new JLabel[7][7];
+	
+	
+	/**
+	 * Konstruktor
+	 * 
+	 * @param rows antal rader i griden
+	 * @param cols antal kolumner i griden
+	 * @param width bredden på panelen
+	 * @param height höjden på panelen
+	 */
 	
 	public ArrayPanel(int rows, int cols, int width, int height) {
 		setPreferredSize(new Dimension(width,height));
@@ -27,6 +46,13 @@ public class ArrayPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Sätter värdet på en JLabel
+	 * 
+	 * @param row vilken rad
+	 * @param col vilken kolumn
+	 * @param val vilket värde
+	 */
 	public void setArrLabel(int row, int col, int val) {
 		this.arrLabels[row][col].setText(""+val);
 	}
