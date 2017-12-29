@@ -103,9 +103,11 @@ public class TestColor extends JFrame implements ActionListener {
 	public void updateDisplay() {
 		this.colorDisplay.updateDisplay();
 	}
-
+	
+	/**
+	 *  Uppdaterar alla färger så att de är helt opaque
+	 */
 	public void updateColorDisplay(Array7x7 colors) {
-		// Uppdaterar alla färger så att de är helt opaque
 		int iColors[][] = colors.toIntArray();
 		for (int row = 0; row < 7; row++) {
 			for (int col = 0; col < 7; col++) {

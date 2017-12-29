@@ -41,7 +41,6 @@ public class ColorController {
 		}
 
 		testcolor.setColorController(this);
-		// Uppdatera den grafiska arrayen
 		showArray();
 	}
 
