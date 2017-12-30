@@ -7,6 +7,12 @@ import resources.Array7x7;
 import resources.Chars;
 import resources.FlowingText;
 
+/**
+ *  Controller made for the flowingtext-class
+ *  Controlls what happends when buttons are clicked
+ * @author Johannes Roos, Angelina Fransson, Sven Lindqvist
+ *
+ */
 public class FlowingController {
 	Array7x7 array;
 	FlowingText flowingText;
@@ -14,12 +20,22 @@ public class FlowingController {
 	private TimerTask task;
 	private String text;
 
+	/**
+	 * 
+	 * @param array	Array7x7 array, only used once
+	 * @param flowingText FlowiingText-object
+	 */
 	public FlowingController(Array7x7 array, FlowingText flowingText) {
 		super();
 		this.array = array;
 		this.flowingText = flowingText;
 		this.flowingText.setController(this);
 	}
+	
+	/**
+	 * Loops through the incomming char and calls flowingtext.printSquare to print it
+	 * @param arr Array7x7, a char
+	 */
 	public void printChar (Array7x7 arr) {
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
@@ -32,7 +48,12 @@ public class FlowingController {
 			}
 		}
 	}
-
+	
+	/**
+	 * Recives a string that shall be printed
+	 * @param text String, the text that should blink
+	 * @param delay int, the delay between blinks
+	 */
 	public void blink(String text, int delay) {
 		task = new TimerTask() {
 			int counter = 0; 
@@ -40,7 +61,7 @@ public class FlowingController {
 			@Override
 			public void run() {
 				if (counter <text.length()) {
-					printText(text.charAt(counter));
+					printChar(Chars.getChar(text.charAt(counter)));
 					counter++;
 				} else {
 					counter = 0;
@@ -52,15 +73,29 @@ public class FlowingController {
 		timer.schedule(task, text.length(), delay);
 	}
 	
+	/**
+	 * Disables buttons in flowingText
+	 */
+	
 	public void disableButtons() {
 		flowingText.disableButtons();
 	}
 	
+	/**
+	 * Enables buttons in flowingText
+	 */
 	public void enableButtons() {
 		flowingText.enableButtons();
 	}
 
-	public void scrollLeft(String text, int direction, int delay) {
+	/**
+	 * Recives a string that shall scroll over the array
+	 * Disables buttons during the scroll
+	 * @param text string, the text
+	 * @param direction int, direction, 1 - left, 2 - right, 3 - mirrored from left
+	 * @param delay int, the delay between moves
+	 */
+	public void scroll(String text, int direction, int delay) {
 		disableButtons();
 		this.text = text;
 		task = new TimerTask() {
@@ -107,7 +142,12 @@ public class FlowingController {
 		timer.purge();
 		timer.schedule(task, 0, delay);
 	}
-
+	
+	/**
+	 * Shifts the entire array one step to the left
+	 * @param counter int, the column in the current char
+	 * @param charCounter int, the 
+	 */
 	public void shiftLeft(int counter, int charCounter) {
 		int test = 34;
 		for(int i = 0; i <5; i++ ) {
@@ -117,9 +157,7 @@ public class FlowingController {
 			}
 		}
 	}
-	public void printText(char c) {
-		printChar(Chars.getChar(c));
-	}
+
 
 
 }

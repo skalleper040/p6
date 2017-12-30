@@ -9,11 +9,19 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-
+/**
+ * Panel of JLabels used in the flowingtext class
+ * @author Johannes Roos, Angelina Fransson, Sven Lindqvist
+ *
+ */
 public class FlowingArrayPanel extends JPanel{
 	private JLabel arrLabels[][];
 	private int array[][];
 	
+	/**
+	 * Creates a 7xCols array of labels
+	 * @param cols int, the number of columns
+	 */
 	public FlowingArrayPanel(int cols) {
 		arrLabels = new JLabel[7][cols];
 		array = new int[7][cols];
@@ -33,6 +41,11 @@ public class FlowingArrayPanel extends JPanel{
 		}
 	}
 
+	/**
+	 * Reads an entire column and returns a Array7-object
+	 * @param col int, the column to read
+	 * @return Array7
+	 */
 	public Array7 readCol(int col) {
 		Array7 arr = new Array7();
 		for(int i = 0; i<7;i++) {
@@ -45,13 +58,18 @@ public class FlowingArrayPanel extends JPanel{
 		return arr;
 	}
 	
+	/**
+	 * Shifts the entire array one step left
+	 */
 	public void shiftLeft() {
 		for(int i = 1; i <= 34; i++ ) {
 			printCol(readCol(i), i-1);
 		}
 		
 	}
-	
+	/**
+	 * Shifts the entire array one step right
+	 */
 	public void shiftRight() {
 		for(int i = 33; i >= 0; i-- ) {
 			printCol(readCol(i), i+1);
@@ -59,22 +77,38 @@ public class FlowingArrayPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * Prints an entire column
+	 * @param arr Array7, the array to print
+	 * @param col int, where to print it
+	 */
 	public void printCol(Array7 arr, int col) {
 		for(int i = 0; i<7; i++) {
 			if(arr.getElement(i)==1) {
-				arrLabels[i][col].setBackground(Color.MAGENTA);
+				printSquareOn(i, col);
 				array[i][col] = 1;
 			}else {
-				arrLabels[i][col].setBackground(Color.PINK);
+				printSquareOff(i, col);
 				array[i][col] = 0;
 			}
 
 		}
 	}
+	
+	/**
+	 * Changes backgroundcolor to Magenta on one specific label
+	 * @param row int, the row
+	 * @param col int, the col
+	 */
 	public void printSquareOn (int row, int col) {
 			arrLabels[row][col].setBackground(Color.MAGENTA);
 	}
 	
+	/**
+	 * Changes backgroundcolor to Pink on one specific label
+	 * @param row int, the row
+	 * @param col int, the col
+	 */
 	public void printSquareOff (int row, int col) {
 		arrLabels[row][col].setBackground(Color.PINK);
 
