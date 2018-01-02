@@ -55,7 +55,7 @@ public class FontController {
 		string+="};\r\n";
 		PrintWriter out = null;
 		try {
-			out = new PrintWriter(new BufferedWriter(new FileWriter("c:\\output.txt", true)));
+			out = new PrintWriter(new BufferedWriter(new FileWriter("C:\\Users\\Loise\\Downloads\\output.txt", true)));
 			out.println(string);
 		}catch (IOException e) {
 			System.err.println(e);
@@ -91,7 +91,7 @@ public class FontController {
 		string+="};\r\n";
 		PrintWriter out = null;
 		try {
-			out = new PrintWriter(new BufferedWriter(new FileWriter("c:\\output.txt", true)));
+			out = new PrintWriter(new BufferedWriter(new FileWriter("C:\\Users\\Loise\\Downloads\\outputInverted.txt", true)));
 			out.println(string);
 		}catch (IOException e) {
 			System.err.println(e);
