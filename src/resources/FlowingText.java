@@ -1,6 +1,7 @@
 package resources;
 
 import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import javax.swing.JTextField;
 import controllers.Controller;
 import controllers.FlowingController;
 import controllers.FontController;
+import p6.*;
 
 /**
  * 
@@ -24,7 +26,7 @@ import controllers.FontController;
  */
 public class FlowingText extends JFrame implements ActionListener {
 	private FlowingController controller;
-	private FlowingArrayPanel flowingArrayPanel = new FlowingArrayPanel(35);
+	private ColorDisplay display = new ColorDisplay(1,1,Color.CYAN,Color.BLACK);
 	private JPanel botPanel = new JPanel();
 	
 	private String[] dropDown = {"Blinkande","Vänster","Höger","Spelvänt"};
@@ -68,7 +70,7 @@ public class FlowingText extends JFrame implements ActionListener {
 	 */
 	public void designMainFram() {
 		this.setLayout(new BorderLayout());
-		this.add (flowingArrayPanel, BorderLayout.CENTER);
+		this.add (display, BorderLayout.CENTER);
 		this.add(botPanel, BorderLayout.SOUTH);
 	}
 	
@@ -95,51 +97,27 @@ public class FlowingText extends JFrame implements ActionListener {
 	public void setController(FlowingController controller) {
 		this.controller = controller;
 	}
-	/**
-	 * Sets the coordinate On
-	 * @param row int, the row
-	 * @param col int, the col
-	 */
-	public void printSquareOn (int row, int col) {
-		flowingArrayPanel.printSquareOn(row, col);
-	}
-	/**
-	 * Sets the coordinate Off
-	 * @param row int, the row
-	 * @param col int, the col
-	 */
-	public void printSquareOff (int row, int col) {
-		flowingArrayPanel.printSquareOff(row, col);
-	}
-	
-	/**
-	 * Prints and entire column 
-	 * @param arr Arrary7, the colum to print
-	 * @param col int, the position to print it
-	 */
-	public void printCol(Array7 arr, int col) {
-		flowingArrayPanel.printCol(arr, col);
-	}
-	
-	/**
-	 * Shifts the entire board one step to the left
-	 */
-	public void shiftLeft() {
-		flowingArrayPanel.shiftLeft();
-	}
-	
-	/**
-	 * Shifts the entire board one step to the right
-	 */
-	public void shiftRight() {
-		flowingArrayPanel.shiftRight();
-	}
 	
 	/**
 	 * Disable Buttons
 	 */
 	public void disableButtons() {
 		read.setEnabled(false);
+	}
+	
+	public void setDisplay(int[][] colors) {
+		for (int row = 0; row < 7; row++) {
+			for (int col = 0; col < 7; col++) {
+				if(colors[row][col] == 1) {
+					colors[row][col] = Color.rgb(55,55,55);
+					
+				}
+				System.out.print(colors[row][col]);
+			}
+			System.out.println("");			
+		}
+		display.setDisplay(colors);
+		display.updateDisplay();
 	}
 	
 	/**
@@ -160,8 +138,8 @@ public class FlowingText extends JFrame implements ActionListener {
 			controller.blink(words.getText(), delay);
 
 		}	
-		if(e.getSource()== read && dropList.getSelectedIndex() != 0) {
-			controller.scroll(words.getText(), dropList.getSelectedIndex(), delay);
-		}
+//		if(e.getSource()== read && dropList.getSelectedIndex() != 0) {
+//			controller.scroll(words.getText(), dropList.getSelectedIndex(), delay);
+//		}
 	}	
 }
