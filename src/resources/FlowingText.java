@@ -56,7 +56,7 @@ public class FlowingText extends JFrame implements ActionListener {
 	 */
 	public void createBotPanel() {
 		words.setHorizontalAlignment(JTextField.CENTER);
-		words.setPreferredSize(new Dimension(1500, 30));
+		words.setPreferredSize(new Dimension(1000, 30));
 		botPanel.add(words);
 		botPanel.add(dropList);
 		botPanel.add(delayList);

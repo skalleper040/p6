@@ -7,6 +7,8 @@ package resources;
  */
 public class Array7x7 {
 	private Array7[] elements;
+	private Array7 farRight;
+	private Array7 farLeft;
 
 	/**
 	 * Konstruerar en array med 7 array7-objekt
@@ -168,5 +170,31 @@ public class Array7x7 {
 
 		return result;
 
+	}
+	
+	public void shiftHorizontal (char direction, Array7 arr) {
+		if (direction == 'r') {
+			farRight = this.getCol(6);
+			for (int i=5; i>=0; i--) {
+				this.setCol(i+1, this.getCol(i));
+			}
+			this.setCol(0, arr);
+		}
+		
+		else if (direction == 'l') {
+			farLeft = this.getCol(0);
+			for (int i=1; i<=6; i++) {
+				this.setCol(i-1, this.getCol(i));
+			}
+			this.setCol(6, arr);
+		}
+	}
+	
+	public Array7 getFarRight() {
+		return farRight;
+	}
+	
+	public Array7 getFarLeft() {
+		return farLeft;
 	}
 }

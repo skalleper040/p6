@@ -90,42 +90,24 @@ public class Controller {
 	 */
 	public void shiftHorizontal(char direction) {
 		if (direction == 'r') {
+			
+			Array7 tmpLeftCol = ui.getCol('l');
+			for (int i = 0; i < 7; i++) {
+				ui.setColTextField('r', i, array.getElement(i, 6));
+			}
+			array.shiftHorizontal('r', tmpLeftCol);
 
-			// Sparar undan innehållet som finns i textfieldsen just nu
-			Array7 tmpLeftColumn = this.ui.getCol('l');
-			
-			// Lägger sista kolumnen i array7x7 i arrayen rightColumn
-			this.rightColumn = this.array.getCol(array.toIntArray().length - 1);
-			
-			// Lägg in värdena i rightColumn i textFieldsen. Dvs det som "faller över kanten".
-			for (int i = 0; i < this.rightColumn.toIntArray().length; i++) {
-				ui.setColTextField('r', i, this.rightColumn.getElement(i));
-			}
-			
-			// Flytta kolumn för kolumn ett steg åt höger. Går bakifrån. 'i' reprsenterar kolumnen som ska flyttas och den flyttas sedan till i+1.
-			for (int i = array.toIntArray().length - 2; i >= 0; i--) {
-				Array7 colToBeMoved = this.array.getCol(i);
-				this.array.setCol(i + 1, colToBeMoved);
-			}
-			
-			// Lägg in de undansparade värdena från textfieldsen till den första kolumnen i array7x7
-			this.array.setCol(0, tmpLeftColumn);
 		}
 
 		else if (direction == 'l') {
-
-			Array7 tmpRightColumn = this.ui.getCol('r');
-			this.leftColumn = this.array.getCol(0);
+			
+			Array7 tmpRightCol = ui.getCol('r');
+			
 			for (int i = 0; i < 7; i++) {
-				ui.setColTextField('l', i, this.leftColumn.getElement(i));
+				ui.setColTextField('l', i, array.getElement(i, 0));
 			}
-
-			for (int i = 1; i <= array.toIntArray().length-1; i++) {
-				Array7 colToBeMoved = this.array.getCol(i);
-				this.array.setCol(i - 1, colToBeMoved);
-			}
-
-			this.array.setCol(array.toIntArray().length-1, tmpRightColumn);
+			
+			array.shiftHorizontal('l', tmpRightCol);
 		}
 		
 		// Uppdatera den grafiska arrayen
