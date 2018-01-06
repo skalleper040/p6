@@ -17,8 +17,6 @@ public class Controller {
 	private ColorDisplayDemo demo;
 	private Test2UI ui;
 	private Array7x7 array;
-	private Array7 leftColumn;
-	private Array7 rightColumn;
 
 	private int[][] charA = { { Color.BLUE, Color.BLUE, Color.BLUE, Color.WHITE, Color.BLUE, Color.BLUE, Color.BLUE },
 			{ Color.BLUE, Color.BLUE, Color.WHITE, Color.BLUE, Color.WHITE, Color.BLUE, Color.BLUE },
@@ -48,28 +46,6 @@ public class Controller {
 		this.demo = demo;
 		demo.setController(this);
 	}
-	
-	/**
-	 * Konstruktor
-	 * @param ui bestämmer vilket ui som används
-	 * @param array bestämmer vilket Array7x7-objekt som ska användas
-	 */
-	public Controller(Test2UI ui, Array7x7 array) {
-		this.ui = ui;
-		this.array = array;
-		this.rightColumn = array.getCol(6); // Sparar undan den sista arrayen i 7x7-objektet
-		this.leftColumn = array.getCol(0); // Sparar undan den första arrayen 7x7-objektet
-		
-		// Sätter värdena ifrån rightColumn och leftColumn i textFields i UI
-		for (int i = 0; i < 7; i++) {
-			ui.setColTextField('r', i, this.rightColumn.getElement(i));
-		}
-		for (int i = 0; i < 7; i++) {
-			ui.setColTextField('l', i, this.leftColumn.getElement(i));
-		}
-		ui.setController(this);
-		showArray();
-	}
 
 	/**
 	 * Uppdaterar JLabels i UI med rätt värde från given array
@@ -80,56 +56,6 @@ public class Controller {
 				ui.setArrLabels(row, col, array.getElement(row, col));
 			}
 		}
-	}
-
-	/**
-	 * Skiftar innehållet till höger eller vänster.
-	 * 
-	 * @param direction
-	 *            bestämmer riktninngen
-	 */
-	public void shiftHorizontal(char direction) {
-		if (direction == 'r') {
-
-			// Sparar undan innehållet som finns i textfieldsen just nu
-			Array7 tmpLeftColumn = this.ui.getCol('l');
-			
-			// Lägger sista kolumnen i array7x7 i arrayen rightColumn
-			this.rightColumn = this.array.getCol(array.toIntArray().length - 1);
-			
-			// Lägg in värdena i rightColumn i textFieldsen. Dvs det som "faller över kanten".
-			for (int i = 0; i < this.rightColumn.toIntArray().length; i++) {
-				ui.setColTextField('r', i, this.rightColumn.getElement(i));
-			}
-			
-			// Flytta kolumn för kolumn ett steg åt höger. Går bakifrån. 'i' reprsenterar kolumnen som ska flyttas och den flyttas sedan till i+1.
-			for (int i = array.toIntArray().length - 2; i >= 0; i--) {
-				Array7 colToBeMoved = this.array.getCol(i);
-				this.array.setCol(i + 1, colToBeMoved);
-			}
-			
-			// Lägg in de undansparade värdena från textfieldsen till den första kolumnen i array7x7
-			this.array.setCol(0, tmpLeftColumn);
-		}
-
-		else if (direction == 'l') {
-
-			Array7 tmpRightColumn = this.ui.getCol('r');
-			this.leftColumn = this.array.getCol(0);
-			for (int i = 0; i < 7; i++) {
-				ui.setColTextField('l', i, this.leftColumn.getElement(i));
-			}
-
-			for (int i = 1; i <= array.toIntArray().length-1; i++) {
-				Array7 colToBeMoved = this.array.getCol(i);
-				this.array.setCol(i - 1, colToBeMoved);
-			}
-
-			this.array.setCol(array.toIntArray().length-1, tmpRightColumn);
-		}
-		
-		// Uppdatera den grafiska arrayen
-		showArray();
 	}
 
 	private void show(int[][] arr) {
