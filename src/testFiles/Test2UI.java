@@ -12,6 +12,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
 
 import controllers.Controller;
+import controllers.IntController;
 import resources.*;
 import p6.*;
 
@@ -23,7 +24,7 @@ import p6.*;
  */
 public class Test2UI extends JFrame implements ActionListener {
 
-	private Controller controller;
+	private IntController controller;
 	private ArrayPanel arrayPanel = new ArrayPanel(7,7,250,200);
 	private ColPanel leftColPanel = new ColPanel(7, 30, 200);
 	private ColPanel rightColPanel = new ColPanel(7, 30, 200);
@@ -47,7 +48,7 @@ public class Test2UI extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 	
-	public void setController(Controller controller) {
+	public void setController(IntController controller) {
 		this.controller = controller;
 	}
 	

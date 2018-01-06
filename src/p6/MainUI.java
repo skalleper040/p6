@@ -25,7 +25,7 @@ public class MainUI {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				Test2UI t2 = new Test2UI();
-				Controller controller = new Controller(t2, a772);
+				IntController controller = new IntController(t2, a772);
 			}
 		});
 	}
