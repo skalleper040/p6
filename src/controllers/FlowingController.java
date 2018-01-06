@@ -3,6 +3,7 @@ package controllers;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import p6.Color;
 import resources.Array7;
 import resources.Array7x7;
 import resources.Chars;
@@ -104,6 +105,17 @@ public class FlowingController {
 		}
 	}
 	
+	public Array7x7 toColorArray(Array7x7 colors) {
+		for (int row = 0; row < 7; row++) {
+			for (int col = 0; col < 7; col++) {
+				if(colors.getElement(row, col) == 1) {
+					colors.setElement(row, col, Color.MAGENTA);
+				}
+			}
+		}
+		return colors;
+	}
+	
 	public String reverseString(String words) {
 		String str = "";
 		for(int i = words.length()-1; i >=0; i--) {
@@ -126,6 +138,7 @@ public class FlowingController {
 		lettersArray = new Array7x7[text.length()];
 		for(int i = 0; i < text.length(); i++) {
 			lettersArray[i] = new Array7x7(Chars.getChar(text.charAt(i)));
+			lettersArray[i] = toColorArray(lettersArray[i]);
 		}
 		
 		task = new TimerTask() {
