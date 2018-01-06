@@ -26,7 +26,7 @@ import p6.*;
  */
 public class FlowingText extends JFrame implements ActionListener {
 	private FlowingController controller;
-	private ColorDisplay display = new ColorDisplay(1,1,Color.CYAN,Color.BLACK);
+	private ColorDisplay display = new ColorDisplay(1,5,Color.CYAN,Color.BLACK);
 	private JPanel botPanel = new JPanel();
 	
 	private String[] dropDown = {"Blinkande","Vänster","Höger","Spelvänt"};
@@ -109,7 +109,7 @@ public class FlowingText extends JFrame implements ActionListener {
 		for (int row = 0; row < 7; row++) {
 			for (int col = 0; col < 7; col++) {
 				if(colors[row][col] == 1) {
-					colors[row][col] = Color.rgb(55,55,55);
+					colors[row][col] = Color.MAGENTA;
 					
 				}
 				System.out.print(colors[row][col]);
@@ -120,6 +120,20 @@ public class FlowingText extends JFrame implements ActionListener {
 		display.updateDisplay();
 	}
 	
+	public void setDisplay(int[][] colors, int rows, int cols) {
+		for (int row = 0; row < 7; row++) {
+			for (int col = 0; col < 7; col++) {
+				if(colors[row][col] == 1) {
+					colors[row][col] = Color.MAGENTA;
+					
+				}
+				System.out.print(colors[row][col]);
+			}
+			System.out.println("");			
+		}
+		display.setDisplay(colors, rows, cols);
+		display.updateDisplay();
+	}
 	/**
 	 * Enable Buttons
 	 */
@@ -138,8 +152,8 @@ public class FlowingText extends JFrame implements ActionListener {
 			controller.blink(words.getText(), delay);
 
 		}	
-//		if(e.getSource()== read && dropList.getSelectedIndex() != 0) {
-//			controller.scroll(words.getText(), dropList.getSelectedIndex(), delay);
-//		}
+		if(e.getSource()== read && dropList.getSelectedIndex() != 0) {
+			controller.scroll(words.getText(), delay, dropList.getSelectedIndex());
+		}
 	}	
 }

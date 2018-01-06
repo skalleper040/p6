@@ -172,8 +172,15 @@ public class Array7x7 {
 
 	}
 	
+	/**
+	 * Skiftar innehållet höger eller vänster i arrayen
+	 * @param direction bestämmer riktning
+	 * @param arr arrayen som läggs längst till höger eller vänster beroende på riktning
+	 */
+	
 	public void shiftHorizontal (char direction, Array7 arr) {
 		if (direction == 'r') {
+			// Sparar undan 
 			farRight = this.getCol(6);
 			for (int i=5; i>=0; i--) {
 				this.setCol(i+1, this.getCol(i));

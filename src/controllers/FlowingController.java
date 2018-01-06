@@ -3,6 +3,7 @@ package controllers;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import resources.Array7;
 import resources.Array7x7;
 import resources.Chars;
 import resources.FlowingText;
@@ -84,7 +85,32 @@ public class FlowingController {
 	public void enableButtons() {
 		flowingText.enableButtons();
 	}
+	
+	public void shiftRight(Array7x7[] arr) {
+		Array7 temp = arr[arr.length-1].getCol(6);
+		
+		for(int i = 0; i< arr.length;i++) {
+			arr[i].shiftHorizontal('r', temp);
+			temp=arr[i].getFarRight();
+		}
+	}
 
+	public void shiftLeft(Array7x7[] arr) {
+		Array7 temp = arr[0].getCol(0);
+		
+		for(int i  = arr.length-1; i >= 0; i--) {
+			arr[i].shiftHorizontal('l', temp);
+			temp = arr[i].getFarLeft();
+		}
+	}
+	
+	public String reverseString(String words) {
+		String str = "";
+		for(int i = words.length()-1; i >=0; i--) {
+			str += words.charAt(i);
+		}
+		return str;
+	}
 	/**
 	 * Recives a string that shall scroll over the array
 	 * Disables buttons during the scroll
@@ -92,6 +118,36 @@ public class FlowingController {
 	 * @param direction int, direction, 1 - left, 2 - right, 3 - mirrored from left
 	 * @param delay int, the delay between moves
 	 */
+	public void scroll(String text, int delay, int direction) {
+		if(direction ==2) {
+			text = reverseString(text);
+		}
+		text = "     " + text;
+		lettersArray = new Array7x7[text.length()];
+		for(int i = 0; i < text.length(); i++) {
+			lettersArray[i] = new Array7x7(Chars.getChar(text.charAt(i)));
+		}
+		
+		task = new TimerTask() {
+			int counter = 0; 
+
+			@Override
+			public void run() {
+				for(int i = 0; i<5; i++) {
+					flowingText.setDisplay(lettersArray[i].toIntArray(), 0,i);
+				}
+				if(direction == 1) {
+				shiftLeft(lettersArray);
+				} else if(direction == 2) {
+					shiftRight(lettersArray);
+				}
+			}
+			
+			
+		};
+
+		timer.schedule(task, text.length(), delay);
+	}
 	
 	
 
