@@ -180,27 +180,45 @@ public class Array7x7 {
 	
 	public void shiftHorizontal (char direction, Array7 arr) {
 		if (direction == 'r') {
-			// Sparar undan 
+			// Sparar undan innehållet i kolumnen längst ut i kanten
 			farRight = this.getCol(6);
+			
+			// Loopar igenom övriga kolumner och flyttar innehållet ett steg i sidled
 			for (int i=5; i>=0; i--) {
 				this.setCol(i+1, this.getCol(i));
 			}
+			
+			// lägger in innehållet ifrån inparametern i första kolumnnen i arrayen
 			this.setCol(0, arr);
 		}
 		
 		else if (direction == 'l') {
+			
+			// Sparar undan innehålelet i kolumnnen i längst ut i kanten
 			farLeft = this.getCol(0);
+			
+			// Loopar igenom övriga kolumner och flyttar innehållet ett steg i sidled
 			for (int i=1; i<=6; i++) {
 				this.setCol(i-1, this.getCol(i));
 			}
+			
+			// Lägger in innehållet ifrån inparametern i sista kolumnen i arrayen
 			this.setCol(6, arr);
 		}
 	}
 	
+	/**
+	 * get-metod för kolumnen som faller utanför kanten
+	 * @return Array7-objekt som fallit utanför katen till höger
+	 */
 	public Array7 getFarRight() {
 		return farRight;
 	}
 	
+	/**
+	 * get-metod för kolumnen som faller utanför kanten
+	 * @return Array7-objekt som fallit utanför kanten till vänster
+	 */
 	public Array7 getFarLeft() {
 		return farLeft;
 	}
