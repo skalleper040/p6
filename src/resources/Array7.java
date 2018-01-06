@@ -97,6 +97,7 @@ public class Array7 {
 
 	/**
 	 * Skriver ut alla element i aktuellt objekt
+	 * @return sträng med alla element utskrivna
 	 */
 	public String toString() {
 		String result = "";
