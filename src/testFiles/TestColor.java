@@ -19,6 +19,11 @@ import resources.Array7x7;
 import resources.ArrayPanel;
 import resources.ColPanel;
 
+/**
+ * UI som används i moment 6, Color-implementering
+ * @author Carin Liljequist
+ *
+ */
 public class TestColor extends JFrame implements ActionListener {
 	private ColorController colcontroller;
 	private ArrayPanel arrayPanel = new ArrayPanel(7, 7, 250, 200);
@@ -30,7 +35,7 @@ public class TestColor extends JFrame implements ActionListener {
 	private JPanel gridPanel = new JPanel();
 	private JButton leftButton = new JButton("Flytta vänster");
 	private JButton rightButton = new JButton("Flytta höger");
-	private JButton SwapButton = new JButton("Växla position på hörn");
+	private JButton swapButton = new JButton("Växla position på hörn");
 	private JButton randomSwapButton = new JButton("Växla två randomiserade färger");
 
 	public TestColor() {
@@ -60,13 +65,13 @@ public class TestColor extends JFrame implements ActionListener {
 
 	public void createButtonPanel() {
 		buttonPanel.setLayout(new GridLayout(2, 2, 10, 10));
-		buttonPanel.add(SwapButton);
+		buttonPanel.add(swapButton);
 		buttonPanel.add(randomSwapButton);
 		buttonPanel.add(leftButton);
 		buttonPanel.add(rightButton);
 		buttonPanel.setBorder(new EmptyBorder(0, 30, 30, 30));
 		leftButton.addActionListener(this);
-		SwapButton.addActionListener(this);
+		swapButton.addActionListener(this);
 		randomSwapButton.addActionListener(this);
 		rightButton.addActionListener(this);
 	}
@@ -74,7 +79,7 @@ public class TestColor extends JFrame implements ActionListener {
 	public void setArrLabels(int row, int col, int val) {
 		this.arrayPanel.setArrLabel(row, col, val);
 	}
-
+	
 	public void setColTextField(char direction, int row, int val) {
 		if (direction == 'l') {
 			this.leftColPanel.setColTextField(row, val);
@@ -99,7 +104,7 @@ public class TestColor extends JFrame implements ActionListener {
 			leftColPanel.setCol(col);
 		}
 	}
-
+	
 	public void updateDisplay() {
 		this.colorDisplay.updateDisplay();
 	}
@@ -108,10 +113,10 @@ public class TestColor extends JFrame implements ActionListener {
 	 *  Uppdaterar alla färger så att de är helt opaque
 	 */
 	public void updateColorDisplay(Array7x7 colors) {
-		int iColors[][] = colors.toIntArray();
+		int iColors[][] = colors.toIntArray(); // toIntArray() --> returnerar en 2d-array med lika värden som aktuellt objekt
 		for (int row = 0; row < 7; row++) {
 			for (int col = 0; col < 7; col++) {
-				iColors[row][col] |= (0xFF << 24);
+				iColors[row][col] |= (0xFF << 24); // 100% opaque
 			}
 		}
 		this.colorDisplay.setDisplay(iColors);
@@ -121,7 +126,7 @@ public class TestColor extends JFrame implements ActionListener {
 		if (e.getSource() == leftButton) {
 			colcontroller.shiftInCol('l');
 		}
-		if (e.getSource() == SwapButton) {
+		if (e.getSource() == swapButton) {
 			colcontroller.twoCellsSwap();
 		}
 		if (e.getSource() == randomSwapButton) {
