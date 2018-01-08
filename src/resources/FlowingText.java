@@ -109,16 +109,6 @@ public class FlowingText extends JFrame implements ActionListener {
 	}
 	
 	public void setDisplay(int[][] colors) {
-		for (int row = 0; row < 7; row++) {
-			for (int col = 0; col < 7; col++) {
-				if(colors[row][col] == 1) {
-					colors[row][col] = Color.MAGENTA;
-					
-				}
-				System.out.print(colors[row][col]);
-			}
-			System.out.println("");			
-		}
 		display.setDisplay(colors);
 		display.updateDisplay();
 	}
@@ -154,4 +144,7 @@ public class FlowingText extends JFrame implements ActionListener {
 		}
 		
 	}	
+	public void clearDisplay() {
+		display.clearDisplay();
+	}
 }

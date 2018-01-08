@@ -16,16 +16,17 @@ import resources.FlowingText;
  *
  */
 public class FlowingController {
-	Array7x7 array;
-	FlowingText flowingText;
+	private Array7x7 array;
+	private FlowingText flowingText;
 	private Timer timer = new Timer ();
 	private TimerTask task;
 	private String text;
 	private Array7x7[] lettersArray;
 	/**
-	 * 
+	 * Takes an empty Array7x7 and an FlowingText instance. Calls setController()
+	 * in FlowingText to set its controller to this controller.
 	 * @param array	Array7x7 array, only used once
-	 * @param flowingText FlowiingText-object
+	 * @param flowingText FlowingText-object
 	 */
 	public FlowingController(Array7x7 array, FlowingText flowingText) {
 		super();
@@ -35,16 +36,12 @@ public class FlowingController {
 	}
 	
 	/**
-	 * Loops through the incomming char and calls flowingtext.printSquare to print it
-	 * @param arr Array7x7, a char
-	 */
-	
-	/**
 	 * Recives a string that shall be printed
 	 * @param text String, the text that should blink
 	 * @param delay int, the delay between blinks
 	 */
 	public void blink(String text, int delay) {
+		flowingText.clearDisplay();
 		lettersArray = new Array7x7[text.length()];
 		for(int i = 0; i < text.length(); i++) {
 			lettersArray[i] = new Array7x7(Chars.getChar(text.charAt(i)));
@@ -53,43 +50,30 @@ public class FlowingController {
 		
 		this.task = new TimerTask() {
 			int counter = 0; 
-
 			@Override
 			public void run() {
 				if(counter < text.length()) {
-					
-					
 					flowingText.setDisplay(lettersArray[counter].toIntArray());
 					counter++;
-				}
-				
-				
+				}	
 			}
-			
-			
 		};
-
 		timer.schedule(this.task, text.length(), delay);
 	}
+	/**
+	 * Ends the timer and enables button.
+	 */
 	
 	public void stop() {
 		this.task.cancel();
-	}
-	/**
-	 * Disables buttons in flowingText
-	 */
-	
-	public void disableButtons() {
-		flowingText.disableButtons();
-	}
-	
-	/**
-	 * Enables buttons in flowingText
-	 */
-	public void enableButtons() {
 		flowingText.enableButtons();
 	}
 	
+	
+	/**
+	 * Shifts an array of Array7x7 objects one colum to the right.
+	 * @param arr The array of Array7x7 object to be shifted right.
+	 */
 	public void shiftRight(Array7x7[] arr) {
 		Array7 temp = arr[arr.length-1].getCol(6);
 		
@@ -98,7 +82,10 @@ public class FlowingController {
 			temp=arr[i].getFarRight();
 		}
 	}
-
+	/**
+	 * Shifts an array of Array7x7 objects one colum to the left.
+	 * @param arr The array of Array7x7 object to be shifted left.
+	 */
 	public void shiftLeft(Array7x7[] arr) {
 		Array7 temp = arr[0].getCol(0);
 		
@@ -107,7 +94,11 @@ public class FlowingController {
 			temp = arr[i].getFarLeft();
 		}
 	}
-	
+	/**
+	 * Translates int values from an Array7x7 into colors to form characters.
+	 * @param colors The Array7x7 object to be translated into characters.
+	 * @return colors An Array7x7 object with color values, forming a character.
+	 */
 	public Array7x7 toColorArray(Array7x7 colors) {
 		for (int row = 0; row < 7; row++) {
 			for (int col = 0; col < 7; col++) {
@@ -118,7 +109,11 @@ public class FlowingController {
 		}
 		return colors;
 	}
-	
+	/**
+	 * Takes a String object and reverses it.
+	 * @param words The String to be reversed.
+	 * @return str The reversed String.
+	 */
 	public String reverseString(String words) {
 		String str = "";
 		for(int i = words.length()-1; i >=0; i--) {
@@ -127,13 +122,15 @@ public class FlowingController {
 		return str;
 	}
 	/**
-	 * Recives a string that shall scroll over the array
-	 * Disables buttons during the scroll
+	 * Receives a String and translates it into characters in color to be displayed in the
+	 * monitor in various directions and speed based on user choice. Until user press "Stop" 
+	 * the "Run" button is disabled.
 	 * @param text string, the text
 	 * @param direction int, direction, 1 - left, 2 - right, 3 - mirrored from left
 	 * @param delay int, the delay between moves
 	 */
 	public void scroll(String text, int delay, int direction) {
+		flowingText.disableButtons();
 		if(direction ==2) {
 			text = reverseString(text);
 		}
@@ -158,14 +155,8 @@ public class FlowingController {
 					shiftRight(lettersArray);
 				}
 			}
-			
-			
 		};
 
 		timer.schedule(task, text.length(), delay);
 	}
-	
-	
-
-
 }
