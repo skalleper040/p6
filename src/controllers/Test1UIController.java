@@ -13,6 +13,7 @@ import testFiles.Test1UI;
  * @author Johannes, Angelina
  *
  */
+
 public class Test1UIController {
 	private Test1UI test1ui;
 	private Array7x7 array;
