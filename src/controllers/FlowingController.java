@@ -48,10 +48,10 @@ public class FlowingController {
 		lettersArray = new Array7x7[text.length()];
 		for(int i = 0; i < text.length(); i++) {
 			lettersArray[i] = new Array7x7(Chars.getChar(text.charAt(i)));
-			
+			lettersArray[i] = toColorArray(lettersArray[i]);
 		}
 		
-		task = new TimerTask() {
+		this.task = new TimerTask() {
 			int counter = 0; 
 
 			@Override
@@ -69,9 +69,12 @@ public class FlowingController {
 			
 		};
 
-		timer.schedule(task, text.length(), delay);
+		timer.schedule(this.task, text.length(), delay);
 	}
 	
+	public void stop() {
+		this.task.cancel();
+	}
 	/**
 	 * Disables buttons in flowingText
 	 */

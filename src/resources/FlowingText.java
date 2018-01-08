@@ -37,7 +37,8 @@ public class FlowingText extends JFrame implements ActionListener {
 
 	private JTextField words = new JTextField();
 	private JButton read = new JButton("kör");
-	
+
+	private JButton stopBtn = new JButton("STOP");
 	/**
 	 * Creates the main-frame
 	 */
@@ -63,6 +64,7 @@ public class FlowingText extends JFrame implements ActionListener {
 		botPanel.add(dropList);
 		botPanel.add(delayList);
 		botPanel.add(read);
+		botPanel.add(stopBtn);
 	}
 	
 	/**
@@ -80,6 +82,7 @@ public class FlowingText extends JFrame implements ActionListener {
 	public void addActionListeners() {
 		read.addActionListener(this);
 		dropList.addActionListener(this);
+		stopBtn.addActionListener(this);
 	}
 	
 	/**
@@ -145,5 +148,10 @@ public class FlowingText extends JFrame implements ActionListener {
 		if(e.getSource()== read && dropList.getSelectedIndex() != 0) {
 			controller.scroll(words.getText(), delay, dropList.getSelectedIndex());
 		}
+		
+		if(e.getSource() == stopBtn) {
+			controller.stop();
+		}
+		
 	}	
 }
