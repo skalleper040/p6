@@ -13,6 +13,13 @@ import resources.Array7;
 import resources.Array7x7;
 import testFiles.TestColor;
 
+/**
+ * Controller skapad för att implementera Color-klassen i ColorDisplay
+ * Kontrollerar vad som händer när man klickar på olika knappar
+ * @author Carin Liljequist
+ *
+ */
+
 public class ColorController {
 	private Random random = new Random();
 	private TestColor testcolor;
@@ -28,11 +35,11 @@ public class ColorController {
 	public ColorController(TestColor testcolor, Array7x7 array) {
 		this.testcolor = testcolor;
 		this.array = array;
-		// Sparar undan den sista arrayen i 7x7-objektet
+		// Sparar undan arrayen längst till höger i 7x7-objektet och lagrar det i variabeln rightColumn av typen Array7
 		this.rightColumn = array.getCol(6); 
-		// Sparar undan den första arrayen 7x7-objektet
+		// Sparar undan arrayen längst till vänster i 7x7-objektet och lagrar det i variabeln leftColumn av typen Array7
 		this.leftColumn = array.getCol(0); 
-
+		// går igenom rad (i) för rad vad som sparats i variabeln rightColumn
 		for (int i = 0; i < 7; i++) {
 			testcolor.setColTextField('r', i, this.rightColumn.getElement(i));
 		}
@@ -40,7 +47,7 @@ public class ColorController {
 			testcolor.setColTextField('l', i, this.leftColumn.getElement(i));
 		}
 		testcolor.setColorController(this);
-		showArray();
+	//	showArray();
 	}
 
 	/**
@@ -109,7 +116,7 @@ public class ColorController {
 	}
 	
 	/**
-	 * Test color implementation which randomly swaps two pixels
+	 * Testar color implementation genom att randomly byta plats på två pixlar
 	 */
 	public void randomSwap() {
 		int colA = random.nextInt(6);
@@ -123,7 +130,7 @@ public class ColorController {
 	}
 
 	/**
-	 * Test color implementation which swaps two pixels
+	 * Testar color implementation genom att byta plats på två pixlar
 	 */
 	public void twoCellsSwap() {
 		int rowA = 0;
@@ -147,7 +154,7 @@ public class ColorController {
 						{ 0xFF558800, 0x27008645, 0x0394FF00, 0xFF00FFFF, 0x99FF8322, 0x02921100, 0xFF662499 },
 						{ 0x2700FF00, 0x292200FF, 0x32839300, 0x00223793, 0xFF247303, 0xFF721127, 0x51729924 },
 						{ 0xFF0000FF, 0x03002529, 0x88273300, 0xFF2176FF, 0x43847238, 0x88FF1100, 0x97FF6624 },
-						{ 0x77FF0023, 0x870026FF, 0x82937600, 0x93FF29FF, 0x04839402, 0x82361100, 0x009267 } };
+						{ 0x77FF0023, 0x870026FF, 0x82937600, 0x93FF29FF, 0x04839402, 0x82361100, 0x00926709 } };
 				Array7x7 array = new Array7x7(arrayColor);
 				ColorController colcontroller = new ColorController(testcolor, array);
 				testcolor.updateColorDisplay(array);
