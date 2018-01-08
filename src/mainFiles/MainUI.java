@@ -1,4 +1,4 @@
-package p6;
+package mainFiles;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -8,6 +8,12 @@ import controllers.*;
 import resources.*;
 import testFiles.*;
 
+
+/**
+ * Test med mainmetod för moment 3, uppgift 5.
+ * @author Oscar
+ *
+ */
 
 public class MainUI {
 	public static void main(String[] args) {
