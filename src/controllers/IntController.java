@@ -19,7 +19,7 @@ public class IntController {
 	
 	
 	/**
-	 * Konstruktor
+	 * Konstruktor. Sparar undan yttersta kolumner i arrayen. Sätter värden i textfields-kolumner i UI och ritar upp arrayen i UI.
 	 * @param ui bestämmer vilket ui som används
 	 * @param array bestämmer vilket Array7x7-objekt som ska användas
 	 */
