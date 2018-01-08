@@ -47,17 +47,6 @@ public class Controller {
 		demo.setController(this);
 	}
 
-	/**
-	 * Uppdaterar JLabels i UI med rätt värde från given array
-	 */
-	public void showArray() {
-		for (int row = 0; row < 7; row++) {
-			for (int col = 0; col < 7; col++) {
-				ui.setArrLabels(row, col, array.getElement(row, col));
-			}
-		}
-	}
-
 	private void show(int[][] arr) {
 		for (int row = 0; row < stamp.length; row++) {
 			for (int col = 0; col < stamp[row].length; col++) {

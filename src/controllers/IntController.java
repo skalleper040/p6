@@ -4,6 +4,12 @@ import resources.Array7;
 import resources.Array7x7;
 import testFiles.Test2UI;
 
+
+/**
+ * Controller som används till moment 3
+ * @author Oscar
+ *
+ */
 public class IntController {
 	
 	private Test2UI ui;

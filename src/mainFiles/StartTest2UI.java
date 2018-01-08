@@ -1,4 +1,4 @@
-package p6;
+package mainFiles;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -9,7 +9,13 @@ import resources.*;
 import testFiles.*;
 
 
-public class MainUI {
+/**
+ * Test med mainmetod för moment 3, uppgift 5.
+ * @author Oscar
+ *
+ */
+
+public class StartTest2UI {
 	public static void main(String[] args) {
 		int[][] mat1 = { { 1, 2, 3, 4, 5, 6, 7 }, 
 				{ 2, 3, 5, 1, 2, 5, 2 }, 
