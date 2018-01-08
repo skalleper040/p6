@@ -52,9 +52,7 @@ public class Test1UIController {
 				test1ui.setLeftCol(leftColum);
 			}else {
 				JOptionPane.showMessageDialog(null,"Fel");
-
 			}
-			
 		}
 	}
 	
