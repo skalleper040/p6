@@ -1,5 +1,6 @@
 package controllers;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import resources.Array7;
@@ -12,6 +13,7 @@ import testFiles.Test1UI;
  * @author Johannes, Angelina
  *
  */
+
 public class Test1UIController {
 	private Test1UI test1ui;
 	private Array7x7 array;
@@ -38,11 +40,20 @@ public class Test1UIController {
 	 */
 	public void read(boolean row) {
 		if(row) {
-			bottomRow = array.getRow(test1ui.getRowNbr()-1);
-			test1ui.setBotRow(bottomRow);
+			if(1<= test1ui.getRowNbr() && test1ui.getRowNbr() <=7) {
+
+				bottomRow = array.getRow(test1ui.getRowNbr()-1);
+				test1ui.setBotRow(bottomRow);	
+			}else {
+				JOptionPane.showMessageDialog(null,"Fel");
+			}
 		}else {
-			leftColum = array.getCol(test1ui.getColNbr()-1);
-			test1ui.setLeftCol(leftColum);
+			if(1<= test1ui.getColNbr() && test1ui.getColNbr() <=7) {
+				leftColum = array.getCol(test1ui.getColNbr()-1);
+				test1ui.setLeftCol(leftColum);
+			}else {
+				JOptionPane.showMessageDialog(null,"Fel");
+			}
 		}
 	}
 	
@@ -53,9 +64,19 @@ public class Test1UIController {
 	 */
 	public void write(boolean row) {
 		if(row) {
-			array.setRow(test1ui.getRowNbr()-1, test1ui.getBotRow());
+			if(1 <= test1ui.getRowNbr() && test1ui.getRowNbr() <=7) {
+				array.setRow(test1ui.getRowNbr()-1, test1ui.getBotRow());
+			}else {
+				JOptionPane.showMessageDialog(null,"Fel");
+			}
+			
 		}else {
-			array.setCol(test1ui.getColNbr()-1, test1ui.getLeftCol());
+			if(1 <= test1ui.getColNbr() && test1ui.getColNbr() <=7) {
+				array.setCol(test1ui.getColNbr()-1, test1ui.getLeftCol());
+			}else {
+				JOptionPane.showMessageDialog(null,"Fel");
+			}
+			
 		}
 		
 		showArray();

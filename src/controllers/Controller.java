@@ -15,8 +15,6 @@ public class Controller {
 	private Timer timer;
 	private Random random = new Random();
 	private ColorDisplayDemo demo;
-	private Test2UI ui;
-	private Array7x7 array;
 
 	private int[][] charA = { { Color.BLUE, Color.BLUE, Color.BLUE, Color.WHITE, Color.BLUE, Color.BLUE, Color.BLUE },
 			{ Color.BLUE, Color.BLUE, Color.WHITE, Color.BLUE, Color.WHITE, Color.BLUE, Color.BLUE },

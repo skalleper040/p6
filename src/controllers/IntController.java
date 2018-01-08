@@ -19,7 +19,7 @@ public class IntController {
 	
 	
 	/**
-	 * Konstruktor
+	 * Konstruktor. Sparar undan yttersta kolumner i arrayen. Sätter värden i textfields-kolumner i UI och ritar upp arrayen i UI.
 	 * @param ui bestämmer vilket ui som används
 	 * @param array bestämmer vilket Array7x7-objekt som ska användas
 	 */
@@ -61,22 +61,29 @@ public class IntController {
 	public void shiftHorizontal(char direction) {
 		if (direction == 'r') {
 
+			// Hämtar innehållet från textFälts-kolumnen i UI och sparar undand det.
 			Array7 tmpLeftCol = ui.getCol('l');
+			
+			// Uppdaterar textfälts-kolumnen i UI med värdena från kolumnen längst till höger i arrayen
 			for (int i = 0; i < 7; i++) {
 				ui.setColTextField('r', i, array.getElement(i, 6));
 			}
+			
+			// Flyttar innehållet i arrayen i sidled med anrop till Array7x7-objektet. De undansparade värdena från textfältskolumnen skickas som inaprameter
 			array.shiftHorizontal('r', tmpLeftCol);
-
 		}
 
 		else if (direction == 'l') {
-
+			
+			// Hämtar innehållet från textFälts-kolumnen i UI och sparar undand det.
 			Array7 tmpRightCol = ui.getCol('r');
 
+			// Uppdaterar textfälts-kolumnen i UI med värdena från kolumnen längst till vänster i arrayen
 			for (int i = 0; i < 7; i++) {
 				ui.setColTextField('l', i, array.getElement(i, 0));
 			}
-
+			
+			// Flyttar innehållet i arrayen i sidled med anrop till Array7x7-objektet. De undansparade värdena från textfältskolumnen skickas som inaprameter
 			array.shiftHorizontal('l', tmpRightCol);
 		}
 

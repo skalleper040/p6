@@ -1,9 +1,6 @@
 package mainFiles;
 
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-
 import controllers.*;
 import resources.*;
 import testFiles.*;
