@@ -71,7 +71,6 @@ public class IntController {
 			
 			// Flyttar innehållet i arrayen i sidled med anrop till Array7x7-objektet. De undansparade värdena från textfältskolumnen skickas som inaprameter
 			array.shiftHorizontal('r', tmpLeftCol);
-
 		}
 
 		else if (direction == 'l') {
