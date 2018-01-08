@@ -15,7 +15,7 @@ import testFiles.*;
  *
  */
 
-public class MainUI {
+public class StartTest2UI {
 	public static void main(String[] args) {
 		int[][] mat1 = { { 1, 2, 3, 4, 5, 6, 7 }, 
 				{ 2, 3, 5, 1, 2, 5, 2 }, 
