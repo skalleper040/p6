@@ -26,7 +26,6 @@ import resources.ColPanel;
  */
 public class TestColor extends JFrame implements ActionListener {
 	private ColorController colcontroller;
-	private ArrayPanel arrayPanel = new ArrayPanel(7, 7, 250, 200);
 	private ColorDisplay colorDisplay = new ColorDisplay(Color.WHITE, Color.LTGRAY);
 	private ColPanel leftColPanel = new ColPanel(7, 30, 200);
 	private ColPanel rightColPanel = new ColPanel(7, 30, 200);
@@ -55,7 +54,6 @@ public class TestColor extends JFrame implements ActionListener {
 	public void createMainPanel() {
 		mainPanel.setPreferredSize(new Dimension(400, 300));
 		mainPanel.setLayout(new BorderLayout());
-		gridPanel.add(arrayPanel);
 		gridPanel.add(colorDisplay);
 		mainPanel.add(colorDisplay, BorderLayout.CENTER);
 		mainPanel.add(leftColPanel, BorderLayout.WEST);
@@ -75,10 +73,6 @@ public class TestColor extends JFrame implements ActionListener {
 		randomSwapButton.addActionListener(this);
 		rightButton.addActionListener(this);
 	}
-
-	public void setArrLabels(int row, int col, int val) {
-		this.arrayPanel.setArrLabel(row, col, val);
-	}
 	
 	public void setColTextField(char direction, int row, int val) {
 		if (direction == 'l') {
@@ -96,6 +90,7 @@ public class TestColor extends JFrame implements ActionListener {
 		}
 		return null;
 	}
+	
 
 	public void setCol(char direction, Array7 col) {
 		if (direction == 'r') {

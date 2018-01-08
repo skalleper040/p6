@@ -32,7 +32,7 @@ public class FlowingText extends JFrame implements ActionListener {
 	private String[] dropDown = {"Blinkande","Vänster","Höger"};
 	private JComboBox dropList = new JComboBox(dropDown);
 	
-	private String[] delayTimer = {"Fysatan va snabbt", "Snabbast", "Snabbare", "Normal", "Långsammare", "Långsammaste", "Kristina"};
+	private String[] delayTimer = {"Fysatan va snabbt", "Snabbast", "Snabbare", "Normal", "Långsammare", "Långsammaste", "Gu va långsamt"};
 	private JComboBox delayList = new JComboBox(delayTimer);
 
 	private JTextField words = new JTextField();

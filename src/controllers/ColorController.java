@@ -47,20 +47,6 @@ public class ColorController {
 			testcolor.setColTextField('l', i, this.leftColumn.getElement(i));
 		}
 		testcolor.setColorController(this);
-	//	showArray();
-	}
-
-	/**
-	 * Uppdaterar JLabels med ColorDisplay
-	 */
-	public void showArray() {
-		for (int row = 0; row < 7; row++) {
-			for (int col = 0; col < 7; col++) {
-				testcolor.setArrLabels(row, col, array.getElement(row, col));
-			}
-		}
-		testcolor.updateColorDisplay(this.array);
-		testcolor.updateDisplay();
 	}
 
 	/**
@@ -112,7 +98,8 @@ public class ColorController {
 		// Utför flyttoperationen och sparar columnen som flyttas ut 
 		Array7 shiftOut = this.shiftHorizontal(direction, shiftIn);
 		this.testcolor.setCol(direction, shiftOut);
-		showArray();
+		this.testcolor.updateColorDisplay(array);
+		this.testcolor.updateDisplay();
 	}
 	
 	/**
@@ -126,7 +113,8 @@ public class ColorController {
 		int tmp = array.getElement(rowA, colA);
 		array.setElement(rowA, colA, array.getElement(rowB, colB));
 		array.setElement(rowB, colB, tmp);
-		showArray();
+		this.testcolor.updateColorDisplay(array);
+		this.testcolor.updateDisplay();
 	}
 
 	/**
@@ -140,7 +128,8 @@ public class ColorController {
 		int tmp = array.getElement(rowA, colA);
 		array.setElement(rowA, colA, array.getElement(rowB, colB));
 		array.setElement(rowB, colB, tmp);
-		showArray();
+		this.testcolor.updateColorDisplay(array);
+		this.testcolor.updateDisplay();
 	}
 
 	public static void main(String[] args) {

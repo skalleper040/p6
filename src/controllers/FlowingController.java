@@ -29,12 +29,11 @@ public class FlowingController {
 	 * @param flowingText FlowingText-object
 	 */
 	public FlowingController(Array7x7 array, FlowingText flowingText) {
-		super();
 		this.array = array;
 		this.flowingText = flowingText;
 		this.flowingText.setController(this);
 	}
-	
+
 	/**
 	 * Recives a string that shall be printed
 	 * @param text String, the text that should blink
@@ -42,41 +41,44 @@ public class FlowingController {
 	 */
 	public void blink(String text, int delay) {
 		flowingText.clearDisplay();
+		flowingText.disableButtons();
 		lettersArray = new Array7x7[text.length()];
 		for(int i = 0; i < text.length(); i++) {
 			lettersArray[i] = new Array7x7(Chars.getChar(text.charAt(i)));
 			lettersArray[i] = toColorArray(lettersArray[i]);
 		}
-		
+
 		this.task = new TimerTask() {
 			int counter = 0; 
 			@Override
 			public void run() {
 				if(counter < text.length()) {
-					flowingText.setDisplay(lettersArray[counter].toIntArray());
+					flowingText.setDisplay(lettersArray[counter].toIntArray(), 0, 2);
 					counter++;
-				}	
+				}else {
+					flowingText.enableButtons();
+				}
 			}
 		};
-		timer.schedule(this.task, text.length(), delay);
+		timer.schedule(this.task, 0, delay);
 	}
 	/**
 	 * Ends the timer and enables button.
 	 */
-	
+
 	public void stop() {
 		this.task.cancel();
 		flowingText.enableButtons();
 	}
-	
-	
+
+
 	/**
 	 * Shifts an array of Array7x7 objects one colum to the right.
 	 * @param arr The array of Array7x7 object to be shifted right.
 	 */
 	public void shiftRight(Array7x7[] arr) {
 		Array7 temp = arr[arr.length-1].getCol(6);
-		
+
 		for(int i = 0; i< arr.length;i++) {
 			arr[i].shiftHorizontal('r', temp);
 			temp=arr[i].getFarRight();
@@ -88,7 +90,7 @@ public class FlowingController {
 	 */
 	public void shiftLeft(Array7x7[] arr) {
 		Array7 temp = arr[0].getCol(0);
-		
+
 		for(int i  = arr.length-1; i >= 0; i--) {
 			arr[i].shiftHorizontal('l', temp);
 			temp = arr[i].getFarLeft();
@@ -140,7 +142,7 @@ public class FlowingController {
 			lettersArray[i] = new Array7x7(Chars.getChar(text.charAt(i)));
 			lettersArray[i] = toColorArray(lettersArray[i]);
 		}
-		
+
 		task = new TimerTask() {
 			int counter = 0; 
 
@@ -150,13 +152,13 @@ public class FlowingController {
 					flowingText.setDisplay(lettersArray[i].toIntArray(), 0,i);
 				}
 				if(direction == 1) {
-				shiftLeft(lettersArray);
+					shiftLeft(lettersArray);
 				} else if(direction == 2) {
 					shiftRight(lettersArray);
 				}
 			}
 		};
 
-		timer.schedule(task, text.length(), delay);
+		timer.schedule(task, 0, delay);
 	}
 }
